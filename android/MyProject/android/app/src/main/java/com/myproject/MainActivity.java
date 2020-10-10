@@ -1,8 +1,6 @@
 package com.myproject;
 
 import com.facebook.react.ReactActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,14 +9,13 @@ public class MainActivity extends ReactActivity {
    * rendering of the component.
    */
   @Override
-  protected String getMainComponentName() {
-    return "MyProject";
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      
   }
 
   @Override
-  protected void onCreate(Bundle saveInstanceState){
-    super.onCreate(saveInstanceState);
-    setContentView(R.layout.activity_main);
+  protected String getMainComponentName() {
+    return "MyProject";
   }
-
 }

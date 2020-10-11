@@ -58,7 +58,7 @@ $ .open AMDMserver.sqlite3
     * 잠금 Fragment
     * 통계 Fragment
     * 설정 Fragment
-    * TurnOn Activity
+* TurnOn Activity
 
 ## Server
 * Python3으로 이루어진 TCP 소켓 서버입니다.

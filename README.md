@@ -18,11 +18,13 @@
  - Python 3버전을 통해 개발
  - TCP 소켓 통신 서버
  - SQLite로 DB 구현
- 
+
 ### IoT
 
 ### Android
-
+ - *Fragment*를 통하여 메인화면 구현
+ - *BroadCast Receiver*를 통해 안드로이드 켜질시 상태 구현
+ - chart 구현을 위해 *[MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)*를 사용하여 구현
 
 ## 설치 안내 (Installation Process) - 미완성
 
@@ -184,4 +186,4 @@ IS_LOCK | INTEGER | X
 - 부규필 (@gmail.com), Github Id: Qfeel-Dev
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License) - 미완성
- * 
+ * [linechart](https://github.com/PhilJay/MPAndroidChart)

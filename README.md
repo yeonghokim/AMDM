@@ -1,9 +1,8 @@
 ## AMDM(Army Mobile Device Management)
+저희는 RFID 기술을 이용한 IoT 장치와 휴대전화를 통제하는 APP을 개발하여 군에서의 보안/안전적인 측면을 더욱 강화시키는 것 뿐만아니라 전군 장병들의 휴대폰 관리를 전산화 처리를 할려고 합니다.
+저희 팀은 국방 오픈소스 아카데미에 참가하여 국군 모바일 단말 장치 관리 시스템(Army Mobile Device Management System)을 구현시키고자 합니다. 🔥
 
-
-💙 ☁️ 👍 🔥 🙌
-
-## 팀소개 및 프로잭트 설명 동영상
+## 팀소개 및 프로잭트 설명 동영상 👍
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
 ## 기능 설계
@@ -24,7 +23,7 @@
 ### Android
  - *Fragment*를 통하여 메인화면 구현
  - *BroadCast Receiver*를 통해 안드로이드 켜질시 상태 구현
- - chart 구현을 위해 *[MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)*를 사용하여 구현
+ - chart 구현을 위해 [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)를 사용하여 구현
 
 ## 설치 안내 (Installation Process) - 미완성
 
@@ -42,12 +41,12 @@ $ sqlite3
 $ .open AMDMserver.sqlite3
 ```
 
-# 프로젝트 사용법 (Getting Started) - 미완성
-1. Android
-2. Server
-3. IoT장비와 데이터 교환
-4. Android와 데이터 교환
-5. DataBase(SQLite)
+## 프로젝트 사용법 (Getting Started) - 미완성
+1. [Android](https://github.com/yeonghokim/AMDM#android-1)
+2. [Server](https://github.com/yeonghokim/AMDM#server)
+3. [IoT장비와 데이터 교환](https://github.com/yeonghokim/AMDM#iot%EC%9E%A5%EB%B9%84-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%90%ED%99%98)
+4. [Android와 데이터 교환](https://github.com/yeonghokim/AMDM#android-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%90%ED%99%98)
+5. [DataBase(SQLite)](https://github.com/yeonghokim/AMDM#database-sqlite)
 
 ## Android
 #### 화면 리스트
@@ -181,7 +180,7 @@ PHONE_UNIQUENUM | INTEGER | X | PHONE.PHONE_PR
 MANAGETIME | DATETIME | X
 IS_LOCK | INTEGER | X
 
-## 팀 정보 (Team Information)
+## 팀 정보 (Team Information) 💙
 - 김영호 (yeongho.kim2000@gmail.com), Github Id: yeonghokim
 - 부규필 (@gmail.com), Github Id: Qfeel-Dev
 

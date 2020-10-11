@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/colorBackground">
 
 
     <LinearLayout
@@ -22,6 +23,7 @@
         android:orientation="horizontal"
         android:layout_weight="0"
         android:gravity="center"
+        android:background="@color/mainNavigaionButtonBackground"
         >
         <Button
             android:layout_width="@dimen/menu_button_size"
@@ -29,6 +31,8 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="30dp"
             android:layout_centerVertical="true"
+            android:background="@color/mainNavigaionButtonBackground"
+            android:textColor="@color/mainNavigaionButtonText"
             android:onClick="onClickStatics"
             android:text="통계"/>
 
@@ -36,16 +40,20 @@
             android:layout_width="@dimen/menu_button_size"
             android:layout_height="@dimen/menu_button_size"
             android:layout_centerInParent="true"
+            android:background="@color/mainNavigaionButtonBackground"
+            android:textColor="@color/mainNavigaionButtonText"
             android:onClick="onClickLock"
             android:text="잠금"/>
+
         <Button
             android:layout_width="@dimen/menu_button_size"
             android:layout_height="@dimen/menu_button_size"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
             android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:background="@color/mainNavigaionButtonBackground"
             android:onClick="onClickSetup"
             android:text="설정"
-            />
+            android:textColor="@color/mainNavigaionButtonText" />
     </RelativeLayout>
 </LinearLayout>

@@ -1,12 +1,13 @@
-## AMDM
-💙 ☁️ 👍 🔥 🙌ㅠㅠㅠ
+## AMDM(Army Mobile Device Management)
+
+
+💙 ☁️ 👍 🔥 🙌
 
 ## 팀소개 및 프로잭트 설명 동영상
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
 ## 기능 설계
  - [안드로이드 디자인](https://ovenapp.io/project/qREXQacVLW1qzBvL5xhXo0wNgUoqVt7W#ScIyR)
- - 수기로 작성시 찍어서 올려주세요
 
 ## 구성 / 필수 조건 안내 (Prerequisites)
 * Android 6.0 (Marshmallow) 이상 
@@ -21,6 +22,32 @@
 ### IoT
 
 ### Android
+
+
+## 설치 안내 (Installation Process) - 미완성
+
+### Android apk 실행
+* ${Git Home}/app-debug.apk
+
+### Python 서버 실행
+```bash
+$ python3 ${Git Home}/AMDMServer/server.py
+```
+
+### SQLite 실행(필요시)
+```bash
+$ sqlite3
+$ .open AMDMserver.sqlite3
+```
+
+# 프로젝트 사용법 (Getting Started) - 미완성
+1. Android
+2. Server
+3. IoT장비와 데이터 교환
+4. Android와 데이터 교환
+5. DataBase(SQLite)
+
+## Android
 #### 화면 리스트
 * 스플래시 activity
 * 로그인 메인 activity
@@ -32,18 +59,9 @@
     * 설정 Fragment
     * TurnOn Activity
 
-## 설치 안내 (Installation Process) - 미완성
-```bash
-$ git clone git주소
-$ yarn or npm install
-$ yarn start or npm run start
-```
+## Server
+* Python3으로 이루어진 TCP 소켓 서버입니다.
 
-## 프로젝트 사용법 (Getting Started) - 미완성
-**마크다운 문법을 이용하여 자유롭게 기재**
-
-# Server
-python으로 이루어진 TCP 소켓 서버입니다.
 ## IoT장비 데이터 교환
 ### 데이터 수신 형태 `IoT -> Server`
   * **Type** : 기기의 형태
@@ -78,6 +96,7 @@ python으로 이루어진 TCP 소켓 서버입니다.
         }
 }
 ```
+
 ## Android 데이터 교환
 ### 데이터 수신 형태 Type1 `Android -> Server` 
   * **Type** : 기기의 형태
@@ -124,7 +143,9 @@ python으로 이루어진 TCP 소켓 서버입니다.
         "TurnOnTime": "2020-10-04 13:49:12"
 }
 ```
-# DataBase (SQLite)
+
+## DataBase (SQLite)
+
 ### User Table
 칼럼이름 | 타입 | 널 유무  | 외래키 유무
 -------- | -------- | ---------- | ----------
@@ -163,4 +184,4 @@ IS_LOCK | INTEGER | X
 - 부규필 (@gmail.com), Github Id: Qfeel-Dev
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License) - 미완성
- * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
+ * 

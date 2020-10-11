@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".login.LoginActivity" />
         <activity
             android:name=".SplashActivity"
             android:noHistory="true"
@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginMain" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".login.LoginMainActivity" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

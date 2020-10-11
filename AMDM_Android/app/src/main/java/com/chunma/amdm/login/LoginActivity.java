@@ -1,10 +1,10 @@
 package com.chunma.amdm.login;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+        import android.os.Bundle;
 
-import com.chunma.amdm.R;
+        import com.chunma.amdm.R;
 
 public class LoginActivity extends AppCompatActivity {
 

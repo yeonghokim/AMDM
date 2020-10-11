@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/fragmentmanager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_weight="0"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="@dimen/menu_button_size"
+            android:layout_height="@dimen/menu_button_size"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:onClick="onClickStatics"
+            android:text="통계"/>
+
+        <Button
+            android:layout_width="@dimen/menu_button_size"
+            android:layout_height="@dimen/menu_button_size"
+            android:layout_centerInParent="true"
+            android:onClick="onClickLock"
+            android:text="잠금"/>
+        <Button
+            android:layout_width="@dimen/menu_button_size"
+            android:layout_height="@dimen/menu_button_size"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_centerVertical="true"
+            android:onClick="onClickSetup"
+            android:text="설정"
+            />
+    </RelativeLayout>
+</LinearLayout>

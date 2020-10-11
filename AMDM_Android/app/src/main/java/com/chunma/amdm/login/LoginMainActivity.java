@@ -2,16 +2,15 @@ package com.chunma.amdm.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
+import com.chunma.amdm.MainActivity;
 import com.chunma.amdm.R;
+import com.chunma.amdm.SplashActivity;
 
-public class LoginMain extends AppCompatActivity{
+public class LoginMainActivity extends AppCompatActivity{
 
 
     @Override
@@ -19,11 +18,6 @@ public class LoginMain extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginmain);
 
-        SharedPreferences preferences = getSharedPreferences("AMDM_data",MODE_PRIVATE);
-
-        if(!preferences.getString("loginType","").equals("")){
-            //로그인한 기록이 있음
-        }
 
 
     }
@@ -32,6 +26,8 @@ public class LoginMain extends AppCompatActivity{
         switch (view.getId()) {
             case R.id.exebutton :
                     //간부로 로그인
+
+                startActivity(new Intent(this, MainActivity.class));
                 break ;
             case R.id.soldierbutton :
                     //병사로 로그인

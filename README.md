@@ -1,17 +1,41 @@
 # AMDM
 💙 ☁️ 👍 🔥 🙌ㅠㅠㅠ
 
-# IoT
-1. RFID 태그
-2. 보관함 문이 열림(모터 작동)
-3. 보관함 휴대폰 넣음
-4. 센서 확인 후 (5초,10초 사이) 
-5-1. (O) 문 닫힘
-5-2. (X)
-6. DB로 TCP 전송 
+## 팀소개 및 프로잭트 설명 동영상
+[![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
-- 보관함별로 어떤기기가 사용 될 건지(이건 관리자 용)
-- 최대한 비용감소 측면으로 발전 가능성 증가된다
+## 기능 설계
+ -  발사믹, 카카오 오븐 등 본인이 편한 목업 프레임워크를 이용하여 제작 후 링크 
+ - 수기로 작성시 찍어서 올려주세요
+
+## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+* ECMAScript 6 지원 브라우저 사용
+* 권장: Google Chrome 버젼 77 이상
+
+## 기술 스택 (Technique Used) (예시)
+### Server(back-end)
+ - Python 3버전을 통해 개발
+ - TCP 소켓 통신 서버
+ - SQLite로 DB 구현
+ 
+### IoT
+
+## 설치 안내 (Installation Process)
+```bash
+$ git clone git주소
+$ yarn or npm install
+$ yarn start or npm run start
+```
+
+## 프로젝트 사용법 (Getting Started)
+**마크다운 문법을 이용하여 자유롭게 기재**
+
+## 팀 정보 (Team Information)
+- 김영호 (yeongho.kim2000@gmail.com), Github Id: yeonghokim
+- 부규필 (@gmail.com), Github Id: Qfeel-Dev
+
+## 저작권 및 사용권 정보 (Copyleft / End User License)
+ * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
 
 # Android
 ### 화면 리스트
@@ -23,8 +47,6 @@
   * 통계 페이지
 * 간부 메인페이지
 * 관리자 메인페이지(많음)
-
-
 
 # Server
 python으로 이루어진 TCP 소켓 서버입니다.

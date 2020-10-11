@@ -186,3 +186,5 @@ IS_LOCK | INTEGER | X
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License) - 미완성
  * [linechart](https://github.com/PhilJay/MPAndroidChart)
+ * [dolphineIcon](https://www.flaticon.com/kr/free-icon/dolphin_1807710)
+ * [shieldIcon](https://www.flaticon.com/kr/free-icon/shield_747952?term=%EB%B0%A9%ED%8C%A8&page=2&position=43)

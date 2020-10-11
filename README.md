@@ -10,6 +10,7 @@
 
 ## 구성 / 필수 조건 안내 (Prerequisites)
 * Android 6.0 (Marshmallow) 이상 
+* Python 서버가 실행되어있어야 정상적으로 작동함
 
 ## 기술 스택 (Technique Used)
 ### Server(back-end)
@@ -21,14 +22,15 @@
 
 ### Android
 #### 화면 리스트
-* 로그인 전 메인페이지
-* 회원가입 페이지
-* 로그인 페이지
-* 병사 메인페이지
-  * 반납 페이지
-  * 통계 페이지
-* 간부 메인페이지
-* 관리자 메인페이지(많음)
+* 스플래시 activity
+* 로그인 메인 activity
+* 로그인 activity
+* 회원가입 activity
+* 메인 activity
+    * 잠금 Fragment
+    * 통계 Fragment
+    * 설정 Fragment
+    * TurnOn Activity
 
 ## 설치 안내 (Installation Process) - 미완성
 ```bash

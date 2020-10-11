@@ -1,4 +1,4 @@
-package com.chunma.amdm;
+package com.chunma.amdm.TurnOnPackage;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

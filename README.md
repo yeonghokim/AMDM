@@ -10,7 +10,8 @@
 
 ## 구성 / 필수 조건 안내 (Prerequisites)
 * Android 6.0 (Marshmallow) 이상 
-* Python 서버가 실행되어있어야 정상적으로 작동함
+* Python3.0 이상 필요
+* AMDMServer가 실행되어있어야 정상적으로 작동함
 
 ## 기술 스택 (Technique Used)
 ### Server(back-end)
@@ -62,7 +63,16 @@ $ .open AMDMserver.sqlite3
 
 ## Server
 * Python3으로 이루어진 TCP 소켓 서버입니다.
-* 
+
+### 코드 소개
+1. logs 폴더
+    * 서버의 로그를 저장하는 폴더입니다. D로 시작하면 Default, W로 시작하면 Warning, E로 시작하면 Error를 뜻합니다.
+2. util 폴더
+    * 서버의 전반적인 유틸에 관한 코드입니다.
+    * DBManager.py는 SQLite와 연결하기 위한 코드입니다.
+    * jsonManager.py는 데이터와 Json 끼리 교환하기 위한 코드입니다.
+    * serverLog.py는 로그저장하는 코드입니다.
+    * ServerTime.py는 서버의 시간을 체크하는 코드입니다.
 
 ## IoT장비 데이터 교환
 ### 데이터 수신 형태 `IoT -> Server`

@@ -1,16 +1,14 @@
 #from util.jsonManager import *
 
 import sqlite3
+
 from util.serverLog import LogD
+import os;
 
-DBLocation = "/home/codespace/workspace/AMDMserver.sqlite3";
-
-def setDBLocation(str):
-    DBLocation = str;
+DBLocation =os.path.dirname(os.path.realpath(__file__))+"/../../AMDMserver.sqlite3";
+print(DBLocation)
 
 def updateIoTData(DM,IoTSocket):
-    print(DM.getFileStr())
-    print(DBLocation)
     con = sqlite3.connect(DBLocation)
     cur = con.cursor()
     cur.execute("UPDATE PHONECASE SET IS_LOCK=? WHERE PHONECASE_PR=?;",(DM.getData("Lock"),DM.getData("ID")))
@@ -23,7 +21,6 @@ def updateIoTData(DM,IoTSocket):
     return True
 
 def updateAndroidData(DM,androidSocket):
-    print(DM.getFileStr())
 
     con = sqlite3.connect(DBLocation)
     cur = con.cursor()
@@ -38,7 +35,6 @@ def updateAndroidData(DM,androidSocket):
     return True
 
 def requestAndroidDataToIoT(DM,androidSocket):
-    print(DM.getFileStr())
 
     con = sqlite3.connect(DBLocation)
     cur = con.cursor()
@@ -50,4 +46,3 @@ def requestAndroidDataToIoT(DM,androidSocket):
     androidSocket.sendall('aaa'.encode())
     androidSocket.close();
     return True
-

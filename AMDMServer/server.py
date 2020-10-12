@@ -1,29 +1,28 @@
 from socket import *
 import threading
+import os
+
 from util.DBManager import updateIoTData
 from util.DBManager import updateAndroidData
 from util.DBManager import requestAndroidDataToIoT
-from util.DBManager import setDBLocation
 from util.jsonManager import JsonToDataManager
 from util.serverLog import LogD
 from util.serverLog import setLogDirectory
 
+
 Debug = 1
 
 host = "127.0.0.1"
-port = 12345
+port = 12346
 
 serverSocket = socket(AF_INET,SOCK_STREAM)
 serverSocket.bind((host,port)) 
 serverSocket.listen(5)
 
 LogD("서버 생성완료. 대기중입니다.")
-setDBLocation('/home/codespace/workspace/AMDMserver.sqlite3')
-setLogDirectory("/home/codespace/workspace/AMDMServer/logs/")
+setLogDirectory(os.path.dirname(os.path.realpath(__file__))+"/logs/")
 
 while(True):
-
-
     connectionSocket,addr = serverSocket.accept() #accept 할동안 기다림
     LogD(str(addr) + "에서 접속함")
     data =connectionSocket.recv(1024)

@@ -1,6 +1,6 @@
 from util.ServerTime import *
 
-logdirectory = "/home/codespace/workspace/AMDMServer/logs/"
+logdirectory = "C:/Users/W21713/Downloads/AMDM-main/AMDMServer/logs/"
 
 logDefaultName = "D"+serverlogFile()+".txt"
 logErrorName = "E"+serverlogFile()+".txt"

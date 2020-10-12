@@ -1,0 +1,31 @@
+[AMServer 2020-10-12 22:16:02] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 22:17:25] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 22:18:57] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 22:20:44] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 22:20:46] ('127.0.0.1', 54989)에서 접속함
+[AMServer 2020-10-12 22:20:46] Android Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:20:46] Android 데이터 전송 요청
+[AMServer 2020-10-12 22:20:46] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:20:46] requestAndroidSQL 완료(AdminID : 1,IoTID : 1Lock : 1)
+[AMServer 2020-10-12 22:21:33] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 22:21:35] ('127.0.0.1', 55001)에서 접속함
+[AMServer 2020-10-12 22:21:35] Android Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:21:35] Android 데이터 전송 요청
+[AMServer 2020-10-12 22:21:35] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:21:35] requestAndroidSQL 완료(AdminID : 1,IoTID : 1Lock : 1)
+[AMServer 2020-10-12 22:21:52] ('127.0.0.1', 55006)에서 접속함
+[AMServer 2020-10-12 22:21:52] Android Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:21:52] Android 데이터 전송 요청
+[AMServer 2020-10-12 22:21:52] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:21:52] requestAndroidSQL 완료(AdminID : 1,IoTID : 1Lock : 1)
+[AMServer 2020-10-12 22:24:00] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 22:24:03] ('127.0.0.1', 55037)에서 접속함
+[AMServer 2020-10-12 22:24:03] Android Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:24:03] Android 데이터 전송 요청
+[AMServer 2020-10-12 22:24:03] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:24:03] requestAndroidSQL 완료(AdminID : 1,IoTID : 1Lock : 1)
+[AMServer 2020-10-12 22:24:03] ('127.0.0.1', 55038)에서 접속함
+[AMServer 2020-10-12 22:24:03] Android Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:24:03] Android 데이터 전송 요청
+[AMServer 2020-10-12 22:24:03] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 22:24:03] requestAndroidSQL 완료(AdminID : 1,IoTID : 1Lock : 1)

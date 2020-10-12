@@ -1,0 +1,23 @@
+[AMServer 2020-10-12 13:46:18] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 13:47:48] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 13:57:31] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 13:57:55] ('127.0.0.1', 47034)에서 접속함
+[AMServer 2020-10-12 13:57:55] IoT Data {"Type": "IoT","ID": 1,"Lock": 0}
+[AMServer 2020-10-12 13:58:32] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 13:58:41] ('127.0.0.1', 47114)에서 접속함
+[AMServer 2020-10-12 13:58:41] IoT Data {"Type": "IoT","ID": 1,"Lock": 0}
+[AMServer 2020-10-12 14:00:13] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 14:00:16] ('127.0.0.1', 47286)에서 접속함
+[AMServer 2020-10-12 14:00:16] IoT Data {"Type": "IoT","ID": 1,"Lock": 0}
+[AMServer 2020-10-12 14:00:16] UpdateIoTSQL 완료(id : 1,Lock : 0)
+[AMServer 2020-10-12 14:00:34] ('127.0.0.1', 47328)에서 접속함
+[AMServer 2020-10-12 14:00:34] Android Data {"Type": "Android","RequestType": 1,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-12 22:55:10"}
+[AMServer 2020-10-12 14:00:34] Android 데이터 수신
+[AMServer 2020-10-12 14:00:34] UpdateAndroidSQL 완료(id : 1,Lock : 1)
+[AMServer 2020-10-12 14:00:44] ('127.0.0.1', 47350)에서 접속함
+[AMServer 2020-10-12 14:00:44] Android Data {"Type": "Android","RequestType": 1,"ID": 3,"IoTID": 1,"Lock": 1,"Time": "2020-10-12 22:55:10"}
+[AMServer 2020-10-12 14:00:44] Android 데이터 수신
+[AMServer 2020-10-12 14:00:44] UpdateAndroidSQL 완료(id : 3,Lock : 1)
+[AMServer 2020-10-12 14:00:53] ('127.0.0.1', 47364)에서 접속함
+[AMServer 2020-10-12 14:00:53] IoT Data {"Type": "IoT","ID": 1,"Lock": 1}
+[AMServer 2020-10-12 14:00:53] UpdateIoTSQL 완료(id : 1,Lock : 1)

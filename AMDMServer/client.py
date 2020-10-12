@@ -12,7 +12,7 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((HOST, PORT))
 
 # 메시지를 전송합니다.
-client_socket.sendall('{"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}'.encode())
+client_socket.sendall('{"Type": "IoT","ID": 1,"Lock": 1}'.encode())
 
 # 메시지를 수신합니다.
 data = client_socket.recv(1024)

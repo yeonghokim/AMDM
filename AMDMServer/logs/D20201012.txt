@@ -29,3 +29,9 @@
 [AMServer 2020-10-12 22:24:03] Android ������ ���� ��û
 [AMServer 2020-10-12 22:24:03] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
 [AMServer 2020-10-12 22:24:03] requestAndroidSQL �Ϸ�(AdminID : 1,IoTID : 1Lock : 1)
+[AMServer 2020-10-12 13:36:21] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-12 13:36:57] ('127.0.0.1', 44630)에서 접속함
+[AMServer 2020-10-12 13:36:57] Android Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 13:36:57] Android 데이터 전송 요청
+[AMServer 2020-10-12 13:36:57] IoT Data {"Type": "Android","RequestType": 2,"ID": 1,"IoTID": 1,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-12 13:36:57] requestAndroidSQL 완료(AdminID : 1,IoTID : 1Lock : 1)

@@ -3,7 +3,7 @@
 저희 팀은 국방 오픈소스 아카데미에 참가하여 국군 모바일 단말 장치 관리 시스템(Army Mobile Device Management System)을 구현시키고자 합니다. 🔥
 
 - 로고
-![Logo](https://raw.githubusercontent.com/yeonghokim/AMDM/main/logo/logo_1.png)
+![Logo](https://raw.githubusercontent.com/yeonghokim/AMDM/main/logo/logo.png)
 
 ## 팀소개 및 프로잭트 설명 동영상 👍
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)

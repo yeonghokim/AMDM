@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         transaction.replace(R.id.fragmentmanager,mainLockFragment);
         transaction.commit();
+
     }
 
     public void onClickSetup(View v){
-
         fragmentManager =getSupportFragmentManager();
 
         transaction = fragmentManager.beginTransaction();

@@ -28,4 +28,10 @@ public class MainLockFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main_lock, container, false);
     }
+
+    public void onClickLock(View v){
+        //잠겨져 있지 않으므로 잠금으로 변환시키는 애니메이션
+
+        
+    }
 }

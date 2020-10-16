@@ -1,0 +1,30 @@
+[AMServer 2020-10-16 12:59:25] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-16 13:00:04] ('127.0.0.1', 51452)에서 접속함
+[AMServer 2020-10-16 13:00:04] Android Data {"Type": "Android","RequestType": 1,"ID": 1234567,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-16 13:00:04] Android 데이터 수신
+[AMServer 2020-10-16 13:00:04] UpdateAndroidSQL 완료(id : 1234567,Lock : 1)
+[AMServer 2020-10-16 13:01:33] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-16 13:01:36] ('127.0.0.1', 51620)에서 접속함
+[AMServer 2020-10-16 13:01:36] Android Data {"Type": "Android","RequestType": 1,"ID": 1234567,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-16 13:01:36] Android 데이터 수신
+[AMServer 2020-10-16 13:01:36] UpdateAndroidSQL 완료(id : 1234567,Lock : 1)
+[AMServer 2020-10-16 13:08:35] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-16 13:08:39] ('127.0.0.1', 52350)에서 접속함
+[AMServer 2020-10-16 13:08:39] Android Data {"Type": "Android","RequestType": 1,"ID": 1234567,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-16 13:08:39] Android 데이터 수신
+[AMServer 2020-10-16 13:08:39] UpdateAndroidSQL 완료(id : 1234567,Lock : 1)
+[AMServer 2020-10-16 13:09:13] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-16 13:09:24] ('127.0.0.1', 47420)에서 접속함
+[AMServer 2020-10-16 13:09:24] Android Data {"Type": "Android","RequestType": 1,"ID": 1234567,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-16 13:09:24] Android 데이터 수신
+[AMServer 2020-10-16 13:09:24] UpdateAndroidSQL 완료(id : 1234567,Lock : 1)
+[AMServer 2020-10-16 13:10:24] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-16 13:10:30] ('127.0.0.1', 52578)에서 접속함
+[AMServer 2020-10-16 13:10:30] Android Data {"Type": "Android","RequestType": 1,"ID": 1234567,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-16 13:10:30] Android 데이터 수신
+[AMServer 2020-10-16 13:10:30] UpdateAndroidSQL 완료(id : 1234567,Lock : 1)
+[AMServer 2020-10-16 13:10:59] 서버 생성완료. 대기중입니다.
+[AMServer 2020-10-16 13:11:03] ('127.0.0.1', 52638)에서 접속함
+[AMServer 2020-10-16 13:11:03] Android Data {"Type": "Android","RequestType": 1,"ID": 1234567,"Lock": 1,"Time": "2020-10-04 13:49:12"}
+[AMServer 2020-10-16 13:11:03] Android 데이터 수신
+[AMServer 2020-10-16 13:11:03] UpdateAndroidSQL 완료(id : 1234567,Lock : 1)

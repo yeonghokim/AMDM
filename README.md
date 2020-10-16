@@ -190,6 +190,7 @@ PHONE_UNIQUENUM | INTEGER | X | PHONE.PHONE_PR
 MANAGETIME | DATETIME | X
 IS_LOCK | INTEGER | X
 
+
 ## 팀 정보 (Team Information) 💙
 - 김영호 (yeongho.kim2000@gmail.com), Github Id: yeonghokim
 - 부규필 (@gmail.com), Github Id: Qfeel-Dev

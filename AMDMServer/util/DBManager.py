@@ -3,6 +3,7 @@
 import sqlite3
 
 from util.serverLog import LogD
+from DBclass.sqlUser import User
 import os;
 
 DBLocation =os.path.dirname(os.path.realpath(__file__))+"/../../AMDMserver.sqlite3";
@@ -27,11 +28,24 @@ def updateAndroidData(DM,androidSocket):
     cur.execute("UPDATE PHONE SET IS_LOCK=? WHERE PHONE_PR=?;",(DM.getData("Lock"),DM.getData("ID")))
     cur.execute("INSERT INTO LOCKMANAGE(PHONE_UNIQUENUM,MANAGETIME, IS_LOCK) VALUES(?,CURRENT_TIMESTAMP,?);",(DM.getData("ID"),DM.getData("Lock")))
     con.commit();
-    con.close();
+    
 
     LogD("UpdateAndroidSQL 완료(id : "+str(DM.getData("ID"))+",Lock : "+str(DM.getData("Lock"))+")")
     androidSocket.sendall('aaa'.encode())
     androidSocket.close();
+
+    cur.execute("SELECT * FROM USER") 
+    rows = cur.fetchall()
+
+    datatuple=()
+    for row in rows: 
+        user = User()
+        user.setDefault(row)
+        user.printAll()
+        
+
+    con.close();
+    
     return True
 
 def requestAndroidDataToIoT(DM,androidSocket):

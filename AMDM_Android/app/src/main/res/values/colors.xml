@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBackground">#35455C</color>
     <color name="mainNavigaionButtonText">#35455C</color>
+    <color name="mainNavigaionButtonTextSelect">#3333b6</color>
 
     <color name="mainNavigaionButtonBackground">#ffffff</color>
 </resources>

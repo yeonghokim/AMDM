@@ -24,6 +24,8 @@
         android:layout_weight="0"
         android:gravity="center"
         android:background="@color/mainNavigaionButtonBackground"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         >
         <LinearLayout
             android:layout_width="@dimen/menu_button_size_width"
@@ -34,12 +36,12 @@
             android:background="@color/mainNavigaionButtonBackground"
             android:gravity="center">
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/menu_image_button_size"
+                android:layout_height="@dimen/menu_image_button_size"
                 android:background="#ffffff"
                 android:onClick="onClickStatics"
                 android:scaleType="centerInside"
-                android:src="@drawable/night_mode"
+                android:src="@drawable/graph"
                 android:id="@+id/staticsbutton"/>
             <TextView
                 android:layout_width="match_parent"
@@ -60,8 +62,8 @@
             android:background="@color/mainNavigaionButtonBackground"
             android:gravity="center">
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/menu_image_button_size"
+                android:layout_height="@dimen/menu_image_button_size"
                 android:background="#ffffff"
                 android:onClick="onClickLock"
                 android:scaleType="centerInside"
@@ -86,12 +88,12 @@
             android:background="@color/mainNavigaionButtonBackground"
             android:gravity="center">
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/menu_image_button_size"
+                android:layout_height="@dimen/menu_image_button_size"
                 android:background="#ffffff"
                 android:onClick="onClickSetup"
                 android:scaleType="centerInside"
-                android:src="@drawable/night_mode"
+                android:src="@drawable/settings"
                 android:id="@+id/setupbutton"/>
             <TextView
                 android:layout_width="match_parent"

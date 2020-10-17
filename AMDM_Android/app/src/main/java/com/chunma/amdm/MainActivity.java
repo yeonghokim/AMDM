@@ -9,9 +9,14 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewParent;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chunma.amdm.mainfragment.MainLockFragment;
 import com.chunma.amdm.mainfragment.MainSetupFragment;
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected FragmentTransaction transaction;
 
     int nowPage=2;//main
+    int changePage=0;
 
     ImageButton staticsbutton;
     ImageButton mainbutton;
@@ -36,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
     TextView mainText;
     TextView setupText;
 
+    MainActivity mainActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mainActivity=this;
         fragmentManager =getSupportFragmentManager();
 
         transaction = fragmentManager.beginTransaction();
@@ -58,13 +67,18 @@ public class MainActivity extends AppCompatActivity {
 
         mainText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
         mainbutton.setImageResource(R.drawable.night_mode_select);
+
+        //mainbutton.setTranslationY(-10.0f);
+
     }
 
-    public void onClickSetup(View v){
+    public void onClickStatics(View v){
+
         fragmentManager =getSupportFragmentManager();
 
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragmentmanager,mainSetupFragment);
+
+        transaction.replace(R.id.fragmentmanager,mainStaticsFragment);
         transaction.commit();
         changeImage(1);
     }
@@ -77,39 +91,96 @@ public class MainActivity extends AppCompatActivity {
         changeImage(2);
 
     }
-    public void onClickStatics(View v){
-
+    public void onClickSetup(View v){
         fragmentManager =getSupportFragmentManager();
 
         transaction = fragmentManager.beginTransaction();
-
-        transaction.replace(R.id.fragmentmanager,mainStaticsFragment);
+        transaction.replace(R.id.fragmentmanager,mainSetupFragment);
         transaction.commit();
         changeImage(3);
     }
-    public void changeImage(int chagepage){
-        switch (nowPage){
-            case 1:
-                staticsText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonText));
-                staticsbutton.setImageResource(R.drawable.night_mode);
-            case 2:
-                mainText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonText));
-                mainbutton.setImageResource(R.drawable.night_mode);
-            case 3:
-                setupText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonText));
-                setupbutton.setImageResource(R.drawable.night_mode);
-        }
-        switch (chagepage){
-            case 1:
-                staticsText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
-                staticsbutton.setImageResource(R.drawable.night_mode_select);
-            case 2:
-                mainText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
-                mainbutton.setImageResource(R.drawable.night_mode_select);
-            case 3:
-                setupText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
-                setupbutton.setImageResource(R.drawable.night_mode_select);
-        }
-        nowPage=chagepage;
+    public void changeImage(int changepage){
+        if(changepage==nowPage) return;
+        changePage=changepage;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        ImageButton downImage=null;
+                        switch (nowPage){
+                            case 1:
+                                staticsText.setTextColor(ContextCompat.getColor(mainActivity.getApplicationContext(), R.color.mainNavigaionButtonText));
+                                staticsbutton.setImageResource(R.drawable.graph);
+                                downImage = staticsbutton;
+                                break;
+                            case 2:
+                                mainText.setTextColor(ContextCompat.getColor(mainActivity.getApplicationContext(), R.color.mainNavigaionButtonText));
+                                mainbutton.setImageResource(R.drawable.night_mode);
+                                downImage = mainbutton;
+                                break;
+                            case 3:
+                                setupText.setTextColor(ContextCompat.getColor(mainActivity.getApplicationContext(), R.color.mainNavigaionButtonText));
+                                setupbutton.setImageResource(R.drawable.settings);
+                                downImage = setupbutton;
+                                break;
+                        }
+                        Animation anim = AnimationUtils.loadAnimation(mainActivity.getApplicationContext(),R.anim.translate_down);   // 에니메이션 설정 파일
+                        /*final ImageButton finalDownImage = downImage;
+                        anim.setAnimationListener(new Animation.AnimationListener() {
+                            public void onAnimationStart(Animation animation) {}
+                            public void onAnimationRepeat(Animation animation) {}
+                            public void onAnimationEnd(Animation animation) {
+                                finalDownImage.setTranslationY(0.0f);
+                            }
+                        });
+                        if(downImage!=null)
+                            downImage.startAnimation(anim);*/
+                        downImage.setTranslationY(0.0f);
+
+                        ImageButton upImage=null;
+                        switch (changePage){
+                            case 1:
+                                staticsText.setTextColor(ContextCompat.getColor(mainActivity.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
+                                staticsbutton.setImageResource(R.drawable.graph_select);
+                                upImage = staticsbutton;
+                                break;
+                            case 2:
+                                mainText.setTextColor(ContextCompat.getColor(mainActivity.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
+                                mainbutton.setImageResource(R.drawable.night_mode_select);
+                                upImage =mainbutton;
+                                break;
+                            case 3:
+                                setupText.setTextColor(ContextCompat.getColor(mainActivity.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
+                                setupbutton.setImageResource(R.drawable.settings_select);
+                                upImage = setupbutton;
+                                break;
+                        }
+                        anim = AnimationUtils.loadAnimation(mainActivity.getApplicationContext(),R.anim.translate_up);   // 에니메이션 설정 파일
+                        /*final ImageButton finalUpImage = upImage;
+                        anim.setAnimationListener(new Animation.AnimationListener() {
+                            public void onAnimationStart(Animation animation) {}
+                            public void onAnimationRepeat(Animation animation) {}
+                            public void onAnimationEnd(Animation animation) {
+                                finalUpImage.setTranslationY(-10.0f);
+                            }
+                        });
+
+                        if(upImage!=null)
+                           upImage.startAnimation(anim);*/
+
+                        upImage.setTranslationY(-10.0f);
+
+                        nowPage=changePage;
+                    }
+                });
+            }
+        }).start();
+
+
+
     }
+
+
 }

@@ -14,23 +14,39 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center_vertical">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/mnd_mark"/>
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_lock"
+                android:layout_toLeftOf="@+id/centerTextlogo"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X"
+                android:textSize="40pt"
+                android:textColor="#ffffff"
+                android:id="@+id/centerTextlogo"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"/>
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/mnd_mark"/>
-            
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/mnd_mark"
+                android:layout_toRightOf="@+id/centerTextlogo"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
 
-        </LinearLayout>
+
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +54,7 @@
             android:textAlignment="center"
             android:gravity="center"
             android:textColor="#ffffff"
-            android:fontFamily="@font/tmoneyroundwindextrabold"
+            android:fontFamily="@font/font_tmoneyroundwind"
             android:textSize="20pt"/>
         <TextView
             android:layout_width="match_parent"
@@ -47,7 +63,7 @@
             android:textAlignment="center"
             android:gravity="center"
             android:textColor="#ffffff"
-            android:fontFamily="@font/tmoneyroundwindextrabold"
+            android:fontFamily="@font/font_tmoneyroundwind"
             android:textSize="7pt"/>
     </LinearLayout>
 
@@ -62,7 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="간부로 로그인"
-            android:padding="10dp"
+            android:fontFamily="@font/notosans_medium"
+            android:padding="5dp"
             android:textSize="8pt"
             android:id="@+id/exebutton"
             android:onClick="btnClick"
@@ -75,7 +92,8 @@
             android:layout_height="wrap_content"
             android:text="병사로 로그인"
             android:textSize="8pt"
-            android:padding="10dp"
+            android:fontFamily="@font/notosans_medium"
+            android:padding="5dp"
             android:id="@+id/soldierbutton"
             android:onClick="btnClick"
             android:layout_marginLeft="20dp"

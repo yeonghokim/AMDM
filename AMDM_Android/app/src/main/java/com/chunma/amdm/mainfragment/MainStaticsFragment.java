@@ -36,7 +36,7 @@ public class MainStaticsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+/*
         lineChart=(LineChart)getView().findViewById(R.id.linechart);
         ArrayList<Entry> values = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class MainStaticsFragment extends Fragment {
 
         // set data
         lineChart.setData(data);
-
+*/
 
 
     }

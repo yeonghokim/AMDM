@@ -5,18 +5,12 @@
         <shape android:shape="rectangle">
             <!--make a gradient background-->
 
-            <gradient
-                android:type="linear"
-                android:startColor="#ffffff"
-                android:endColor="#ffffff"
-                android:centerColor="#ffffff"
-                android:angle="90"
-                android:gradientRadius="90"
-                />
+            <solid
+                android:color="#ffffff"/>
             <!--apply a border around button-->
-            <stroke android:color="#000000" android:width="2dp" />
+            <stroke android:color="#000000" android:width="1dp" />
             <!-- make the button corners rounded-->
-            <corners android:radius="20dp"/>
+            <corners android:radius="10dp"/>
 
 
         </shape>
@@ -27,11 +21,11 @@
         <shape android:shape="rectangle">
             <!--make a gradient background-->
             <solid
-                android:color="#ffffff"/>
+                android:color="#eeeeee"/>
             <!--apply a border around button-->
-            <stroke android:color="#000000" android:width="2dp" />
+            <stroke android:color="#000000" android:width="1dp" />
             <!-- make the button corners rounded-->
-            <corners android:radius="20dp"/>
+            <corners android:radius="10dp"/>
 
 
         </shape>

@@ -4,49 +4,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mainfragment.MainLockFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:paddingBottom="80dp">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="잠금해제시간 : 2020. 10. 14. 17:32"
+        android:layout_height="0dp"
+        android:text="v 1.0"
+        android:gravity="start|top"
+        android:paddingLeft="10dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textColor="#ffffff"
+        android:layout_weight="1"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/mainlockbutton"
+            android:fontFamily="@font/notosans_medium"
+            android:gravity="center_horizontal"
+            android:text="잠금해제시간 : 2020. 10. 14. 17:32"
+            android:textColor="#ffffff"
+            android:textSize="9pt"/>
+        <Button
+            android:id="@+id/mainlockbutton"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_above="@+id/welcome_user_textview"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/logo400"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="김영호님 환영합니다."
+            android:id="@+id/welcome_user_textview"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/notosans_medium"
+            android:gravity="center"
+            android:textSize="10pt"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="입대일 : 2019. 10. 14\n오늘 : 2020. 10. 14.\n전역일 : 2021. 05. 01."
+        android:textColor="#ffffff"
+        android:fontFamily="@font/notosans_regular"
         android:gravity="center"
         android:layout_weight="2"/>
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="이미지"
-        android:gravity="center"
-        android:layout_weight="6"
-        android:src="@drawable/logo_lock"
-        android:background="#ffffff"/>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="김영호님 환영합니다."
-        android:gravity="center"
-        android:layout_weight="2"
-        android:textSize="10pt"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="입대일 : 2019. 10. 14"
-        android:gravity="center"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="오늘 : 2020. 10. 14."
-        android:gravity="center"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="전역일 : 2021. 05. 01."
-        android:gravity="center"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="버튼을 누르면 잠금이 진행됩니다."
-        android:layout_weight="1"
-        android:gravity="center_horizontal|bottom" />
-
+        android:textColor="#ffffff"
+        android:fontFamily="@font/notosans_regular"
+        android:gravity="center_horizontal|bottom"
+        android:layout_weight="1" />
 </LinearLayout>

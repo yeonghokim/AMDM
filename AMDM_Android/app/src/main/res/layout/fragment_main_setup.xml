@@ -58,6 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="정보수정"
+                    android:textColor="#000000"
                     android:textSize="5pt"
                     android:background="@drawable/softrectangle_button"
                     android:layout_alignParentEnd="true"

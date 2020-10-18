@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "177594567134",
+    "firebase_url": "https://amdm-86263.firebaseio.com",
+    "project_id": "amdm-86263",
+    "storage_bucket": "amdm-86263.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177594567134:android:e46a9d8b9d8944c24e354f",
+        "android_client_info": {
+          "package_name": "com.chunma.amdm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177594567134-nb73vc1v43igtein1n5huknv68s83gkv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhytB1lfK2BBtMeT0FPwo7fbrUp5UMH6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177594567134-nb73vc1v43igtein1n5huknv68s83gkv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

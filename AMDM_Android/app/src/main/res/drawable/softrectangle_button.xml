@@ -8,7 +8,7 @@
             <solid
                 android:color="#ffffff"/>
             <!--apply a border around button-->
-            <stroke android:color="#000000" android:width="1dp" />
+            <stroke android:color="#eeeeee" android:width="1dp" />
             <!-- make the button corners rounded-->
             <corners android:radius="10dp"/>
 
@@ -23,7 +23,7 @@
             <solid
                 android:color="#eeeeee"/>
             <!--apply a border around button-->
-            <stroke android:color="#000000" android:width="1dp" />
+            <stroke android:color="#eeeeee" android:width="1dp" />
             <!-- make the button corners rounded-->
             <corners android:radius="10dp"/>
 

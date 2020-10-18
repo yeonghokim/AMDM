@@ -38,7 +38,7 @@
             <ImageButton
                 android:layout_width="@dimen/menu_image_button_size"
                 android:layout_height="@dimen/menu_image_button_size"
-                android:background="#ffffff"
+                android:background="?android:attr/selectableItemBackground"
                 android:onClick="onClickStatics"
                 android:scaleType="centerInside"
                 android:src="@drawable/graph"
@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/mainNavigaionButtonText"
+                android:background="?android:attr/selectableItemBackground"
                 android:text="통계"
                 android:id="@+id/staticsbuttontext"
                 android:onClick="onClickStatics"/>
@@ -90,7 +91,7 @@
             <ImageButton
                 android:layout_width="@dimen/menu_image_button_size"
                 android:layout_height="@dimen/menu_image_button_size"
-                android:background="#ffffff"
+                android:background="@drawable/main_ripple_effect"
                 android:onClick="onClickSetup"
                 android:scaleType="centerInside"
                 android:src="@drawable/settings"
@@ -100,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/mainNavigaionButtonText"
+                android:background="@drawable/main_ripple_effect"
                 android:text="설정"
                 android:id="@+id/setupbuttontext"
                 android:onClick="onClickSetup"/>

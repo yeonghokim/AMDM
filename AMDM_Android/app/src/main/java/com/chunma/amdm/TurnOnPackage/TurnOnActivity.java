@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,8 @@ public class TurnOnActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turn_on);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
         timeTextView = (TextView)findViewById(R.id.broad_timeTextview);
         Button button = (Button)findViewById(R.id.broad_delaytimebutton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -49,10 +53,10 @@ public class TurnOnActivity extends AppCompatActivity {
         context = this;
 
         //비행기 모드 온
-        if(!isAirModeOn()) {
+        /*if(!isAirModeOn()) {
             Intent intent = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
             startActivity(intent);
-        }
+        }*/
 
         //타임 시작
         timeThread = new Thread(new TimeThread());
@@ -142,5 +146,13 @@ public class TurnOnActivity extends AppCompatActivity {
                     Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
         }
         return isAirplaneMode;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK ||keyCode==KeyEvent.KEYCODE_HOME) {
+            //나중에 차단하기
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

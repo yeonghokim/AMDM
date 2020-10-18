@@ -10,19 +10,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="휴대폰이 지금 잠금 되어 있습니다."
-        android:gravity="center"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="RFID 기기를 통하여 휴대폰을 활성화해보세요!"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_margin="10dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/broad_timeTextview"
-        android:text="60초 뒤에\n휴대폰이 꺼집니다."
+        android:text="휴대폰 잠금이\n진행되고 있습니다."
         android:textSize="15pt"/>
     <Button
         android:layout_width="wrap_content"
@@ -30,8 +26,10 @@
         android:layout_gravity="center"
         android:id="@+id/broad_delaytimebutton"
         android:text="시간 연장"/>
-
-
-
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/broad_RFIDtag_button"
+        android:text="RFID 태그하기"/>
 </LinearLayout>

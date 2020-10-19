@@ -16,3 +16,9 @@ IF 락 시작한 후, 휴대폰이 꺼진다.
 
 락은 여기를 보고 참고한다.
 https://ccdev.tistory.com/16?category=554483
+
+로딩 다이얼로그 
+https://gun0912.tistory.com/72
+
+tcp 통신
+https://github.com/DDANGEUN/TCP_ClientSocket/tree/master

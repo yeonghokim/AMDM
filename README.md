@@ -31,6 +31,8 @@ AMDM의 로고는 초승달과 자물쇠가 합쳐서 좋은 밤을 위해서는
  - *Fragment*를 통하여 메인화면 구현
  - *BroadCast Receiver*를 통해 안드로이드 켜질시 상태 구현
  - chart 구현을 위해 [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)를 사용하여 구현
+ - Lock 구현을 위해 LockScreen을 없애고, 커스텀 액티비티로 대체함
+ - 
 
 ## 설치 안내 (Installation Process) - 미완성
 

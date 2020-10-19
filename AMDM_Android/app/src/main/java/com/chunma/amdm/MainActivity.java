@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mainText.setTextColor(ContextCompat.getColor(this.getApplicationContext(), R.color.mainNavigaionButtonTextSelect));
         mainbutton.setImageResource(R.drawable.night_mode_select);
 
-        //mainbutton.setTranslationY(-10.0f);
+        mainbutton.setTranslationY(-10.0f);
 
     }
 

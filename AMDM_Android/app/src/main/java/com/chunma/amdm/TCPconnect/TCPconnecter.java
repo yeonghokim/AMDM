@@ -1,9 +1,16 @@
 package com.chunma.amdm.TCPconnect;
 
 import android.app.Activity;
-import android.os.StrictMode;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatDialog;
+
+import com.chunma.amdm.R;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,107 +18,112 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class TCPconnecter{
+public class TCPconnecter extends Thread {
     private static final String TAG = "";
 
     private Socket socket;
 
-    private Activity activity;
+    public Activity activity;
 
-    private String HostIP;
+    private String HostIP="127.0.0.1";
     private int Port;
 
     private InputStream dataInputStream;
     private OutputStream dataOutputStream;
 
-    public void Confirmdata(){
-        int SDK_INT = android.os.Build.VERSION.SDK_INT;
+    AppCompatDialog progressDialog;
 
-        if (SDK_INT > 8){
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
+    public void SetTcpSocket(String hostIP,int Port){
+        this.Port=Port;
+        HostIP=hostIP;
     }
 
-    public boolean CreateTcpSocket(String hostIP,int Port){
-        try { //클라이언트 소켓 생성
-            this.Port=Port;
-            HostIP=hostIP;
+    String requestString;
 
-            socket = new Socket(hostIP, Port);
-
-            return true;
-        }  catch (UnknownHostException uhe) {
-// 소켓 생성 시 전달되는 호스트(www.unknown-host.com)의 IP를 식별할 수 없음.
-
-            Log.e(TAG," 생성 Error : 호스트의 IP 주소를 식별할 수 없음.(잘못된 주소 값 또는 호스트이름 사용)");
-
-        } catch (IOException ioe) {
-// 소켓 생성 과정에서 I/O 에러 발생. 주로 네트워크 응답 없음.
-
-            Log.e(TAG," 생성 Error : 네트워크 응답 없음");
-
-        } catch (SecurityException se) {
-// security manager에서 허용되지 않은 기능 수행.
-
-            Log.e(TAG," 생성 Error : 보안(Security) 위반에 대해 보안 관리자(Security Manager)에 의해 발생. (프록시(proxy) 접속 거부, 허용되지 않은 함수 호출)");
-
-        } catch (IllegalArgumentException le) {
-// 소켓 생성 시 전달되는 포트 번호(65536)이 허용 범위(0~65535)를 벗어남.
-
-            Log.e(TAG," 생성 Error : 메서드에 잘못된 파라미터가 전달되는 경우 발생. (0~65535 범위 밖의 포트 번호 사용, null 프록시(proxy) 전달)");
-
-        }
-        return false;
+    public void setRequestString(String str){
+        requestString=str;
     }
 
-    class ConnectThread extends Thread {
+    public void run() {
+        progressON("");
+        /*try { //클라이언트 소켓 생성
 
-        public void run() {
+            socket = new Socket(HostIP, Port);
+            Log.d(TAG, "Socket 생성, 연결.");
 
+            dataInputStream = socket.getInputStream();
+            dataOutputStream = socket.getOutputStream();
 
-            try {
-
-                dataInputStream = socket.getInputStream();
-                dataOutputStream = socket.getOutputStream();
-
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            String OutData = requestString;
+            byte[] data = OutData.getBytes();
+            dataOutputStream.write(data);
 
             byte[] buffer = new byte[1024];
             int bytes;
             while(true){
-                try{
-                    bytes =dataInputStream.read(buffer);
-                    String str = new String(buffer,0,bytes);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                bytes =dataInputStream.read(buffer);
+                String str = new String(buffer,0,bytes);
             }
+
+            socket.close();
+
+        }  catch (UnknownHostException uhe) {
+            Log.e(TAG," 생성 Error : 호스트의 IP 주소를 식별할 수 없음.(잘못된 주소 값 또는 호스트이름 사용)");
+        } catch (IOException ioe) {
+            Log.e(TAG," 생성 Error : 네트워크 응답 없음");
+        } catch (SecurityException se) {
+            Log.e(TAG," 생성 Error : 보안(Security) 위반에 대해 보안 관리자(Security Manager)에 의해 발생. (프록시(proxy) 접속 거부, 허용되지 않은 함수 호출)");
+        } catch (IllegalArgumentException le) {
+            Log.e(TAG," 생성 Error : 메서드에 잘못된 파라미터가 전달되는 경우 발생. (0~65535 범위 밖의 포트 번호 사용, null 프록시(proxy) 전달)");
+        }*/
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        progressOFF();
+        //서비스 실행
+    }
+    public void progressON(String message) {
+        if (activity == null || activity.isFinishing()) {
+            return;
+        }
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressSET(message);
+        } else {
+            progressDialog = new AppCompatDialog(activity);
+            progressDialog.setCancelable(false);
+            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            progressDialog.setContentView(R.layout.loading_dialog);
+            progressDialog.show();
+        }
+
+        final ImageView img_loading_frame = (ImageView) progressDialog.findViewById(R.id.iv_frame_loading);
+        final AnimationDrawable frameAnimation = (AnimationDrawable) img_loading_frame.getBackground();
+        img_loading_frame.post(new Runnable() {
+            @Override
+            public void run() {
+                frameAnimation.start();
+            }
+        });
+
+        TextView tv_progress_message = (TextView) progressDialog.findViewById(R.id.tv_progress_message);
+        if (!TextUtils.isEmpty(message)) {
+            tv_progress_message.setText(message);
         }
     }
-
-    class SendThread extends Thread{
-        private String sendstring;
-
-        public void setSendstring(String str){
-            sendstring=str;
+    public void progressSET(String message) {
+        if (progressDialog == null || !progressDialog.isShowing()) {
+            return;
         }
-
-        public void run(){
-            byte[] outbyte = sendstring.getBytes();
-            try {
-                dataOutputStream.write(outbyte);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        TextView tv_progress_message = (TextView) progressDialog.findViewById(R.id.tv_progress_message);
+        if (!TextUtils.isEmpty(message)) {
+            tv_progress_message.setText(message);
         }
     }
-
-
-
-
+    public void progressOFF() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
 }

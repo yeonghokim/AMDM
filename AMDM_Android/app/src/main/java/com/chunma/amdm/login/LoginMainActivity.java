@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 
 import com.chunma.amdm.MainActivity;
@@ -18,16 +19,19 @@ public class LoginMainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginmain);
 
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
 
-
+        if (SDK_INT > 8){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
     }
 
     public void btnClick(View view) {
         switch (view.getId()) {
             case R.id.exebutton :
                     //간부로 로그인
-
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break ;
             case R.id.soldierbutton :
                     //병사로 로그인

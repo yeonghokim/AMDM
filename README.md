@@ -32,7 +32,7 @@ AMDM의 로고는 초승달과 자물쇠가 합쳐서 좋은 밤을 위해서는
  - *BroadCast Receiver*를 통해 안드로이드 켜질시 상태 구현
  - chart 구현을 위해 [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)를 사용하여 구현
  - Lock 구현을 위해 LockScreen을 없애고, 커스텀 액티비티로 대체함
- - 
+ - TurnOnService 구현
 
 ## 설치 안내 (Installation Process) - 미완성
 
@@ -67,7 +67,7 @@ $ .open AMDMserver.sqlite3
     * 잠금 Fragment
     * 통계 Fragment
     * 설정 Fragment
-* TurnOn Activity
+* LockActivity
 
 ## Server
 * Python3으로 이루어진 TCP 소켓 서버입니다.

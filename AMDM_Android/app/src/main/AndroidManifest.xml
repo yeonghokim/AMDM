@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".TurnOnPackage.TurnOnActivity"/>
+
         <activity
             android:name=".SplashActivity"
             android:noHistory="true">
@@ -23,11 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".login.LoginMainActivity" />
         <activity android:name=".login.LoginActivity"
             android:noHistory="true"/>
+
         <activity android:name=".MainActivity"/>
 
+        <activity android:name=".TurnOnPackage.TurnOnActivity"
+            android:launchMode="singleTask"/>
         <receiver
             android:name=".TurnOnPackage.TurnOnReceiver"
             android:enabled="true"

@@ -19,7 +19,7 @@ public class TurnOnReceiver extends BroadcastReceiver {
         switch (action){
             case Intent.ACTION_BOOT_COMPLETED:
             case Intent.ACTION_SCREEN_OFF:
-                String str = "브로드캐스트가 실행되었습니다.";
+                /*String str = "브로드캐스트가 실행되었습니다.";
                 Toast t1 = Toast.makeText(context,str,Toast.LENGTH_SHORT);
                 t1.show();
 
@@ -33,7 +33,7 @@ public class TurnOnReceiver extends BroadcastReceiver {
 
                 Intent i = new Intent(context, TurnOnActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
+                context.startActivity(i);*/
                 break;
         }
     }

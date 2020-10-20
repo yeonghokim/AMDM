@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected FragmentManager fragmentManager;
     protected FragmentTransaction transaction;
 
-
+    public LinearLayout loadingLayout;
 
     int nowPage=2;//main
     int changePage=0;
@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragmentmanager,mainLockFragment);
         transaction.commit();
+
+        loadingLayout=(LinearLayout)findViewById(R.id.main_loadinglayout);
 
         mainbutton=(ImageButton)findViewById(R.id.mainbutton);
         mainText=(TextView)findViewById(R.id.mainbuttontext);

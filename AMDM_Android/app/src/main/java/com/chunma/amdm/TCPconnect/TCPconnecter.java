@@ -1,6 +1,7 @@
 package com.chunma.amdm.TCPconnect;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
@@ -31,7 +32,7 @@ public class TCPconnecter extends Thread {
     private InputStream dataInputStream;
     private OutputStream dataOutputStream;
 
-    AppCompatDialog progressDialog;
+    Dialog progressDialog;
 
     public void SetTcpSocket(String hostIP,int Port){
         this.Port=Port;
@@ -46,7 +47,6 @@ public class TCPconnecter extends Thread {
 
     @Override
     public void run() {
-        //progressON("Loading..");
         /*try { //클라이언트 소켓 생성
 
             socket = new Socket(HostIP, Port);
@@ -82,7 +82,6 @@ public class TCPconnecter extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //progressOFF();
         //서비스 실행
     }
     public void progressON(String message) {
@@ -92,14 +91,14 @@ public class TCPconnecter extends Thread {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressSET(message);
         } else {
-            progressDialog = new AppCompatDialog(activity);
+            progressDialog = new Dialog(activity);
             progressDialog.setCancelable(false);
             progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             progressDialog.setContentView(R.layout.loading_dialog);
             progressDialog.show();
         }
 
-        final ImageView img_loading_frame = (ImageView) progressDialog.findViewById(R.id.iv_frame_loading);
+        /*final ImageView img_loading_frame = (ImageView) progressDialog.findViewById(R.id.iv_frame_loading);
         final AnimationDrawable frameAnimation = (AnimationDrawable) img_loading_frame.getBackground();
         img_loading_frame.post(new Runnable() {
             @Override
@@ -111,7 +110,7 @@ public class TCPconnecter extends Thread {
         TextView tv_progress_message = (TextView) progressDialog.findViewById(R.id.tv_progress_message);
         if (!TextUtils.isEmpty(message)) {
             tv_progress_message.setText(message);
-        }
+        }*/
     }
     public void progressSET(String message) {
         if (progressDialog == null || !progressDialog.isShowing()) {

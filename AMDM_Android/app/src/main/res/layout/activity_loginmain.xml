@@ -81,12 +81,12 @@
             android:textColor="#000000"
             android:fontFamily="@font/notosans_regular"
             android:background="@drawable/softrectangle_button"
-            android:padding="5dp"
             android:textSize="8pt"
             android:id="@+id/exebutton"
             android:onClick="btnClick"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             />
 
         <Button
@@ -97,7 +97,6 @@
             android:textColor="#000000"
             android:background="@drawable/softrectangle_button"
             android:fontFamily="@font/notosans_regular"
-            android:padding="5dp"
             android:id="@+id/soldierbutton"
             android:onClick="btnClick"
             android:layout_marginLeft="20dp"

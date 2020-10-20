@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,15 +22,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chunma.amdm.R;
+import com.chunma.amdm.rfid.RFIDDialog;
 
-public class TurnOnActivity extends AppCompatActivity {
+public class TurnOnActivity extends AppCompatActivity implements DialogInterface.OnDismissListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turn_on);
 
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
         //비행기 모드 온
         /*if(!isAirModeOn()) {
@@ -39,23 +41,14 @@ public class TurnOnActivity extends AppCompatActivity {
     }
     public void onClickRFID(View v){
         //RFID버튼이 눌렸을떄
-
         //커스텀 다이얼로그 실행
-
         Toast.makeText(getApplicationContext(),"helloAMDM",Toast.LENGTH_LONG).show();
-
+        RFIDDialog customDialog = new RFIDDialog(TurnOnActivity.this,this);
+        customDialog.callFunction();
     }
 
     private Boolean isAirModeOn() {
-        Boolean isAirplaneMode;
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1){  // 젤리빈 이하버전
-            isAirplaneMode = Settings.System.getInt(getContentResolver(),
-                    Settings.System.AIRPLANE_MODE_ON, 0) == 1;
-        }else{
-            isAirplaneMode = Settings.Global.getInt(getContentResolver(),
-                    Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
-        }
-        return isAirplaneMode;
+        return Settings.Global.getInt(getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
     }
 
     @Override
@@ -64,5 +57,12 @@ public class TurnOnActivity extends AppCompatActivity {
             //나중에 차단하기
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        //락 해제
+        if(RFIDDialog.dialog_text==RFIDDialog.DIALOG_CONFIRM)
+            finish();
     }
 }

@@ -21,21 +21,6 @@ import com.chunma.amdm.TurnOnPackage.TurnOnActivity;
 
 public class MainLockFragment extends Fragment {
 
-    class connectThread extends TCPconnecter{
-        @Override
-        public void run(){
-            super.run();
-            //TurnOnService 실행/*
-            /*Intent intent = new Intent(this.activity, LockService.class);
-            this.activity.startService(intent);
-*/
-
-            Intent intent = new Intent(getActivity(), TurnOnActivity.class);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-    }
-
     public MainLockFragment() {
         // Required empty public constructor
     }
@@ -52,11 +37,30 @@ public class MainLockFragment extends Fragment {
         final ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_main_lock, container, false);
         Button lockbutton = (Button)rootview.findViewById(R.id.mainlockbutton);
         lockbutton.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getActivity(),"helloAMDM",Toast.LENGTH_LONG).show();
-                connectThread connecter = new connectThread();
+                TCPconnecter connecter = new TCPconnecter(){
+                    @Override
+                    public void run(){
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((MainActivity)getActivity()).loadingLayout.setAlpha(1.0f);
+                            }
+                        });
+                        super.run();
+                        //TurnOnService 실행/*
+                        /*Intent intent = new Intent(this.activity, LockService.class);
+                        this.activity.startService(intent);
+                        */
+                        Intent intent = new Intent(getActivity(), TurnOnActivity.class);
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                };
+
                 connecter.activity= MainActivity.mainActivity;
                 connecter.SetTcpSocket("127.0.0.1",12345);
                 connecter.setRequestString("Lock");

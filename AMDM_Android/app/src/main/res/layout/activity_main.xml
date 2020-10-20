@@ -1,109 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     tools:context=".MainActivity"
     android:background="@color/colorBackground">
 
-
     <LinearLayout
-        android:id="@+id/fragmentmanager"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/fragmentmanager"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:background="@color/mainNavigaionButtonBackground"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+            <LinearLayout
+                android:layout_width="@dimen/menu_button_size_width"
+                android:layout_height="@dimen/menu_button_size_height"
+                android:orientation="vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/mainNavigaionButtonBackground"
+                android:gravity="center">
+                <ImageButton
+                    android:layout_width="@dimen/menu_image_button_size"
+                    android:layout_height="@dimen/menu_image_button_size"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="onClickStatics"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/graph"
+                    android:id="@+id/staticsbutton"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/mainNavigaionButtonText"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="통계"
+                    android:id="@+id/staticsbuttontext"
+                    android:onClick="onClickStatics"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/menu_button_size_width"
+                android:layout_height="@dimen/menu_button_size_height"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/mainNavigaionButtonBackground"
+                android:gravity="center">
+                <ImageButton
+                    android:layout_width="@dimen/menu_image_button_size"
+                    android:layout_height="@dimen/menu_image_button_size"
+                    android:background="#ffffff"
+                    android:onClick="onClickLock"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/night_mode"
+                    android:id="@+id/mainbutton"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/mainNavigaionButtonText"
+                    android:text="메인"
+                    android:id="@+id/mainbuttontext"
+                    android:onClick="onClickLock"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/menu_button_size_width"
+                android:layout_height="@dimen/menu_button_size_height"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/mainNavigaionButtonBackground"
+                android:gravity="center">
+                <ImageButton
+                    android:layout_width="@dimen/menu_image_button_size"
+                    android:layout_height="@dimen/menu_image_button_size"
+                    android:background="@drawable/main_ripple_effect"
+                    android:onClick="onClickSetup"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/settings"
+                    android:id="@+id/setupbutton"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/mainNavigaionButtonText"
+                    android:background="@drawable/main_ripple_effect"
+                    android:text="설정"
+                    android:id="@+id/setupbuttontext"
+                    android:onClick="onClickSetup"/>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:layout_weight="0"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/mainNavigaionButtonBackground"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-        <LinearLayout
-            android:layout_width="@dimen/menu_button_size_width"
-            android:layout_height="@dimen/menu_button_size_height"
-            android:orientation="vertical"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:background="@color/mainNavigaionButtonBackground"
-            android:gravity="center">
-            <ImageButton
-                android:layout_width="@dimen/menu_image_button_size"
-                android:layout_height="@dimen/menu_image_button_size"
-                android:background="?android:attr/selectableItemBackground"
-                android:onClick="onClickStatics"
-                android:scaleType="centerInside"
-                android:src="@drawable/graph"
-                android:id="@+id/staticsbutton"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/mainNavigaionButtonText"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="통계"
-                android:id="@+id/staticsbuttontext"
-                android:onClick="onClickStatics"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="@dimen/menu_button_size_width"
-            android:layout_height="@dimen/menu_button_size_height"
-            android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:background="@color/mainNavigaionButtonBackground"
-            android:gravity="center">
-            <ImageButton
-                android:layout_width="@dimen/menu_image_button_size"
-                android:layout_height="@dimen/menu_image_button_size"
-                android:background="#ffffff"
-                android:onClick="onClickLock"
-                android:scaleType="centerInside"
-                android:src="@drawable/night_mode"
-                android:id="@+id/mainbutton"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/mainNavigaionButtonText"
-                android:text="메인"
-                android:id="@+id/mainbuttontext"
-                android:onClick="onClickLock"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="@dimen/menu_button_size_width"
-            android:layout_height="@dimen/menu_button_size_height"
-            android:orientation="vertical"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:background="@color/mainNavigaionButtonBackground"
-            android:gravity="center">
-            <ImageButton
-                android:layout_width="@dimen/menu_image_button_size"
-                android:layout_height="@dimen/menu_image_button_size"
-                android:background="@drawable/main_ripple_effect"
-                android:onClick="onClickSetup"
-                android:scaleType="centerInside"
-                android:src="@drawable/settings"
-                android:id="@+id/setupbutton"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/mainNavigaionButtonText"
-                android:background="@drawable/main_ripple_effect"
-                android:text="설정"
-                android:id="@+id/setupbuttontext"
-                android:onClick="onClickSetup"/>
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+        android:orientation="vertical"
+        android:alpha="0"
+        android:id="@+id/main_loadinglayout"
+        android:background="#99222222">
+        <ImageView android:id="@+id/iv_frame_loading"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/loading_frame"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading.."
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+</FrameLayout>

@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,6 +39,10 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
             Intent intent = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
             startActivity(intent);
         }*/
+
+
+
+
     }
     public void onClickRFID(View v){
         //RFID버튼이 눌렸을떄

@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".mainfragment.MainLockFragment"
     android:orientation="vertical"
-    android:background="@color/colorBackground"
-    android:paddingBottom="80dp">
+    android:background="@color/colorBackground">
 
     <TextView
         android:layout_width="match_parent"

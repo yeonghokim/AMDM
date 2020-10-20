@@ -22,3 +22,6 @@ https://gun0912.tistory.com/72
 
 tcp 통신
 https://github.com/DDANGEUN/TCP_ClientSocket/tree/master
+
+NFC
+https://biig.tistory.com/78

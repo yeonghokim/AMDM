@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         if(changepage==nowPage) return;
         changePage=changepage;
 
+
         new Thread(new Runnable() {
             @Override
             public void run() {

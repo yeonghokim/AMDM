@@ -24,12 +24,15 @@ import com.chunma.amdm.mainfragment.MainStaticsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+
     MainLockFragment mainLockFragment = new MainLockFragment();
     MainSetupFragment mainSetupFragment = new MainSetupFragment();
     MainStaticsFragment mainStaticsFragment = new MainStaticsFragment();
 
     protected FragmentManager fragmentManager;
     protected FragmentTransaction transaction;
+
+
 
     int nowPage=2;//main
     int changePage=0;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mainText;
     TextView setupText;
 
-    MainActivity mainActivity;
+    static public MainActivity mainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

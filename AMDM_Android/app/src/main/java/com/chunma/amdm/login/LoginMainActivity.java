@@ -31,7 +31,9 @@ public class LoginMainActivity extends AppCompatActivity{
         switch (view.getId()) {
             case R.id.exebutton :
                     //간부로 로그인
-                startActivity(new Intent(this, LoginActivity.class));
+                Intent intent =new Intent(this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
                 break ;
             case R.id.soldierbutton :
                     //병사로 로그인

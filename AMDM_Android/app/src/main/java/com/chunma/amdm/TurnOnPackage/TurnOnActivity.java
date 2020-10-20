@@ -29,7 +29,7 @@ public class TurnOnActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turn_on);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 
         //비행기 모드 온
         /*if(!isAirModeOn()) {
@@ -41,6 +41,8 @@ public class TurnOnActivity extends AppCompatActivity {
         //RFID버튼이 눌렸을떄
 
         //커스텀 다이얼로그 실행
+
+        Toast.makeText(getApplicationContext(),"helloAMDM",Toast.LENGTH_LONG).show();
 
     }
 

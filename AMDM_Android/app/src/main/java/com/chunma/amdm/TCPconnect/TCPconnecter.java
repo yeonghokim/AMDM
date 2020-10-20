@@ -44,8 +44,9 @@ public class TCPconnecter extends Thread {
         requestString=str;
     }
 
+    @Override
     public void run() {
-        progressON("");
+        //progressON("Loading..");
         /*try { //클라이언트 소켓 생성
 
             socket = new Socket(HostIP, Port);
@@ -81,7 +82,7 @@ public class TCPconnecter extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        progressOFF();
+        //progressOFF();
         //서비스 실행
     }
     public void progressON(String message) {

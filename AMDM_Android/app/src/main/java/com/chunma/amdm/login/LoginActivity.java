@@ -3,11 +3,10 @@ package com.chunma.amdm.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.chunma.amdm.MainActivity;
@@ -22,6 +21,8 @@ public class LoginActivity extends AppCompatActivity {
 
     LinearLayout loading_layout;
 
+    Thread loginThread;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         loading_layout = (LinearLayout)findViewById(R.id.login_loadinglayout);
     }
     public void btnClick(View view) {
-        Thread loginthread = new Thread(new Runnable() {
+        loginThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 //로딩창 보여준 후
@@ -41,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         loading_layout.setAlpha(1.0f);
-
                     }
                 });
 
@@ -63,22 +63,39 @@ public class LoginActivity extends AppCompatActivity {
                 //frameAnimation.stop();
                 //로딩창 끄고
 
-                if(ID_text.getText().equals("admin")&&PW_text.getText().equals("admin")){
-                    runOnUiThread(new Runnable() {
+                if(1==1){
+                //if(ID_text.getText().equals("admin")&&PW_text.getText().equals("admin")){ 이게 잘못되었음
+                    /*runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             goMain();
                         }
-                    });
+                    });*/
+                    Intent intent = new Intent();
+                    intent.setClass(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading_layout.setAlpha(0.0f);
+                    }
+                });
             }
         });
 
         //로그인 하는 것 구현 하면됨
         //네트워크로 구현
-        loginthread.start();
+        loginThread.start();
     }
-    public void goMain(){
-        startActivity(new Intent(this, MainActivity.class));
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        if(e.getAction() == MotionEvent.ACTION_DOWN){
+            synchronized (loginThread){
+                loginThread.notifyAll();
+            }
+        }
+        return true;
     }
 }

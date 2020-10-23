@@ -38,14 +38,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/login_ID"
-                    android:text="아이디"
+                    android:hint="아이디"
+
                     android:fontFamily="@font/tmoneyroundwindregular"
                     android:padding="10dp"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/login_PW"
-                    android:text="비밀번호"
+                    android:hint="비밀번호"
+                    android:inputType="textPassword"
                     android:fontFamily="@font/tmoneyroundwindregular"
                     android:padding="10dp"/>
             </LinearLayout>

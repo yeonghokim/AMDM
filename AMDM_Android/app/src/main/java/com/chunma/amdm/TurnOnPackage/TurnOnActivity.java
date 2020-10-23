@@ -40,16 +40,26 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
             startActivity(intent);
         }*/
 
-
-
-
     }
     public void onClickRFID(View v){
         //RFID버튼이 눌렸을떄
         //커스텀 다이얼로그 실행
         Toast.makeText(getApplicationContext(),"helloAMDM",Toast.LENGTH_LONG).show();
-        RFIDDialog customDialog = new RFIDDialog(TurnOnActivity.this,this);
-        customDialog.callFunction();
+        RFIDDialog RFIDdialog = new RFIDDialog(this, new RFIDDialog.CustomDialogClickListener() {
+            @Override
+            public void onPositiveClick() {
+                Toast.makeText(getApplicationContext(),"Positive",Toast.LENGTH_LONG);
+            }
+
+            @Override
+            public void onNegativeClick() {
+                Toast.makeText(getApplicationContext(),"Positive",Toast.LENGTH_SHORT);
+            }
+        });
+        RFIDdialog.setCanceledOnTouchOutside(true);
+        RFIDdialog.setCancelable(true);
+        RFIDdialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        RFIDdialog.show();
     }
 
     private Boolean isAirModeOn() {

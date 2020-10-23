@@ -1,6 +1,7 @@
 package com.chunma.amdm.rfid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NfcA;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.view.Window;
@@ -19,70 +21,67 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.chunma.amdm.R;
 import com.chunma.amdm.TurnOnPackage.TurnOnActivity;
 
 import java.nio.charset.Charset;
 
 
-public class RFIDDialog {
-
+public class RFIDDialog extends Dialog {
     static public int DIALOG_CANCEL=0;
     static public int DIALOG_CONFIRM=1;
     static public int DIALOG_ERROR=2;
 
-
     static public int dialog_text;
 
+    public interface CustomDialogClickListener {
+        void onPositiveClick();
+        void onNegativeClick();
+    }
+
     private Context context;
+    private CustomDialogClickListener customDialogClickListener;
+    private TextView tvTitle, tvNegative, tvPositive;
 
-    TurnOnActivity activity;
-
-    public RFIDDialog(Context context,TurnOnActivity activity) {
+    public RFIDDialog(@NonNull Context context ,CustomDialogClickListener customDialogClickListener) {
+        super(context);
         this.context = context;
-        this.activity=activity;
+        this.customDialogClickListener = customDialogClickListener;
     }
 
     Thread RFIDthread;
 
-    // 호출할 다이얼로그 함수를 정의한다.
-    public void callFunction() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.custom_dialog);
 
-        // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
-        final Dialog dlg = new Dialog(context);
-
-        // 액티비티의 타이틀바를 숨긴다.
-        dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        // 커스텀 다이얼로그의 레이아웃을 설정한다.
-        dlg.setContentView(R.layout.custom_dialog);
-
-        // 커스텀 다이얼로그를 노출한다.
-        dlg.show();
-
-        final TextView readytextView = (TextView)dlg.findViewById(R.id.ready_rfid);
-        final TextView tagtextView = (TextView)dlg.findViewById(R.id.tag_rfid);
-        final TextView confirmtextView = (TextView)dlg.findViewById(R.id.confirm_rfid);
-
-        final Button confirmButton = (Button)dlg.findViewById(R.id.rfid_dialog_confirm);
-        final Button cancelButton = (Button)dlg.findViewById(R.id.rfid_dialog_cancel);
-
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog_text=DIALOG_CONFIRM;
-                dlg.dismiss();
-            }
-        });
-
+        Button cancelButton = (Button)findViewById(R.id.rfid_dialog_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog_text=DIALOG_CANCEL;
                 RFIDthread.interrupt();
-                dlg.dismiss();
+                customDialogClickListener.onNegativeClick();
+                dismiss();
             }
         });
+
+        final Button confirmButton = (Button)findViewById(R.id.rfid_dialog_confirm);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_text=DIALOG_CONFIRM;
+                customDialogClickListener.onPositiveClick();
+                dismiss();
+            }
+        });
+
+        final TextView readytextView = (TextView)findViewById(R.id.ready_rfid);
+        final TextView tagtextView = (TextView)findViewById(R.id.tag_rfid);
+        final TextView confirmtextView = (TextView)findViewById(R.id.confirm_rfid);
 
         RFIDthread = new Thread(){
             @Override
@@ -94,7 +93,7 @@ public class RFIDDialog {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                activity.runOnUiThread(new Runnable() {
+                getOwnerActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         readytextView.setAlpha(0.3f);
@@ -106,7 +105,7 @@ public class RFIDDialog {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                activity.runOnUiThread(new Runnable() {
+                getOwnerActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         tagtextView.setAlpha(0.3f);
@@ -116,6 +115,8 @@ public class RFIDDialog {
                 });
             }
         };
+
+
         RFIDthread.start();
 
     }
@@ -123,7 +124,7 @@ public class RFIDDialog {
     Intent intent;
 
     public void createRFIDTag() {
-
+/*
         intent =new Intent(activity,TurnOnActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         NfcAdapter mNfcAdapter = NfcAdapter.getDefaultAdapter(activity);
@@ -145,7 +146,7 @@ public class RFIDDialog {
         // 태그 타입
         String type = ndefTag.getType();
         // 태그 ID
-        String id = byteArrayToHexString(myTag.getId());
+        String id = byteArrayToHexString(myTag.getId());*/
 
     }
 

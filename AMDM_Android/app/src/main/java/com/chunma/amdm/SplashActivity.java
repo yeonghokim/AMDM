@@ -3,12 +3,15 @@ package com.chunma.amdm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
+import com.chunma.amdm.TurnOnPackage.TurnOnReceiver;
 import com.chunma.amdm.login.LoginMainActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -41,5 +44,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         linearLayout.startAnimation(anim);
+
     }
 }

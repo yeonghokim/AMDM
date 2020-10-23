@@ -52,12 +52,9 @@ public class MainLockFragment extends Fragment {
                         });
                         super.run();
                         //TurnOnService 실행/*
-                        /*Intent intent = new Intent(this.activity, LockService.class);
-                        this.activity.startService(intent);
-                        */
-                        Intent intent = new Intent(getActivity(), TurnOnActivity.class);
-                        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        Intent intent = new Intent(activity, LockService.class);
+                        intent.setFlags(Intent.FLAG_FROM_BACKGROUND);
+                        activity.startService(intent);
                     }
                 };
 

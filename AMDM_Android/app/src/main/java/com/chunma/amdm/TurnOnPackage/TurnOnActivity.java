@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chunma.amdm.PreferenceManager;
 import com.chunma.amdm.R;
 import com.chunma.amdm.rfid.RFIDDialog;
 
@@ -56,9 +58,9 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
                 Toast.makeText(getApplicationContext(),"Positive",Toast.LENGTH_SHORT);
             }
         });
-        RFIDdialog.setCanceledOnTouchOutside(true);
+        //RFIDdialog.setCanceledOnTouchOutside(true);
         RFIDdialog.setCancelable(true);
-        RFIDdialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        //RFIDdialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         RFIDdialog.show();
     }
 
@@ -77,7 +79,11 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
     @Override
     public void onDismiss(DialogInterface dialog) {
         //락 해제
-        if(RFIDDialog.dialog_text==RFIDDialog.DIALOG_CONFIRM)
+        if(RFIDDialog.dialog_text==RFIDDialog.DIALOG_CONFIRM){
+            PreferenceManager.getInstance().setLockHistory(this,false);
+            stopService(new Intent(this,LockService.class));
             finish();
+        }
     }
+
 }

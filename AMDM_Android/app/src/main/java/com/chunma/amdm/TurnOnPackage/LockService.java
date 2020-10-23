@@ -17,11 +17,7 @@ public class LockService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        mReceiver = new TurnOnReceiver();
-        IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-        registerReceiver(mReceiver, filter);
-
+        createReceiver();
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
@@ -30,9 +26,7 @@ public class LockService extends Service {
         if(intent != null){
             if(intent.getAction()==null){
                 if(mReceiver==null){
-                    mReceiver = new TurnOnReceiver();
-                    IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-                    registerReceiver(mReceiver, filter);
+                    createReceiver();
                 }
             }
         }
@@ -46,5 +40,15 @@ public class LockService extends Service {
         if(mReceiver != null){
             unregisterReceiver(mReceiver);
         }
+    }
+
+    public void createReceiver(){
+        mReceiver = new TurnOnReceiver();
+        IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_BOOT_COMPLETED);
+        registerReceiver(mReceiver, filter);
+
+        Intent intent = new Intent(this,TurnOnActivity.class);
+        startActivity(intent);
     }
 }

@@ -56,7 +56,7 @@ public class RFIDDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.custom_dialog);
+        setContentView(R.layout.rfid_dialog);
 
         Button cancelButton = (Button)findViewById(R.id.rfid_dialog_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {

@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,12 +30,52 @@ import com.chunma.amdm.rfid.RFIDDialog;
 
 public class TurnOnActivity extends AppCompatActivity implements DialogInterface.OnDismissListener{
 
+    LinearLayout rfidLayout;
+
+    Button rfid_cancelButton;
+    Button rfid_confirmButton;
+
+    static public int DIALOG_CANCEL=0;
+    static public int DIALOG_CONFIRM=1;
+    static public int DIALOG_ERROR=2;
+
+    static public int dialog_text;
+
+    TextView readytextView;
+    TextView tagtextView;
+    TextView confirmtextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turn_on);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+
+        rfidLayout =(LinearLayout)findViewById(R.id.rfid_layout);
+
+        rfid_cancelButton=(Button)findViewById(R.id.rfid_dialog_cancel);
+        rfid_confirmButton=(Button)findViewById(R.id.rfid_dialog_confirm);
+
+
+        readytextView = (TextView)findViewById(R.id.ready_rfid);
+        tagtextView = (TextView)findViewById(R.id.tag_rfid);
+        confirmtextView = (TextView)findViewById(R.id.confirm_rfid);
+
+        rfid_cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rfidLayout.setAlpha(0.0f);
+            }
+        });
+        rfid_confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //완료
+            }
+        });
+
+
 
         //비행기 모드 온
         /*if(!isAirModeOn()) {
@@ -47,6 +88,52 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
         //RFID버튼이 눌렸을떄
         //커스텀 다이얼로그 실행
         Toast.makeText(getApplicationContext(),"helloAMDM",Toast.LENGTH_LONG).show();
+        rfidLayout.setAlpha(1.0f);
+        Thread RFIDthread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                dialog_text=DIALOG_ERROR;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        readytextView.setAlpha(1.0f);
+                        tagtextView.setAlpha(0.3f);
+                        confirmtextView.setAlpha(0.3f);
+                        rfid_confirmButton.setClickable(false);
+                    }
+                });
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        readytextView.setAlpha(0.3f);
+                        tagtextView.setAlpha(1.0f);
+                    }
+                });
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tagtextView.setAlpha(0.3f);
+                        confirmtextView.setAlpha(1.0f);
+                        rfid_confirmButton.setClickable(true);
+                    }
+                });
+            }
+        };
+
+
+        RFIDthread.start();
+        /*
         RFIDDialog RFIDdialog = new RFIDDialog(this, new RFIDDialog.CustomDialogClickListener() {
             @Override
             public void onPositiveClick() {
@@ -61,7 +148,7 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
         //RFIDdialog.setCanceledOnTouchOutside(true);
         RFIDdialog.setCancelable(true);
         //RFIDdialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        RFIDdialog.show();
+        RFIDdialog.show();*/
     }
 
     private Boolean isAirModeOn() {
@@ -84,6 +171,16 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
             stopService(new Intent(this,LockService.class));
             finish();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
 }

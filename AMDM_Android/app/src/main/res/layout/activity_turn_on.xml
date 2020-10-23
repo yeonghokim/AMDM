@@ -1,44 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TurnOnPackage.TurnOnActivity"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@color/colorBackground">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/loading_unlock"
-        android:scaleX="1.5"
-        android:scaleY="1.5"/>
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="현재 휴대폰이 잠금상태입니다"
-        android:gravity="center"
-        android:fontFamily="@font/tmoneyroundwind_extrabold"
-        android:layout_margin="20dp"
-        android:textSize="12pt"/>
-    <TextView
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loading_unlock"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="현재 휴대폰이 잠금상태입니다"
+            android:gravity="center"
+            android:fontFamily="@font/tmoneyroundwind_extrabold"
+            android:layout_margin="20dp"
+            android:textSize="12pt"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="RFID 기기를 통하여 휴대폰을 활성화해보세요!"
+            android:fontFamily="@font/tmoneyroundwind_extrabold"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/broad_RFIDtag_button"
+            android:text="태그하기"
+            android:background="#ffffff"
+            android:textColor="#000000"
+            android:fontFamily="@font/tmoneyroundwind_extrabold"
+            android:onClick="onClickRFID"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="center"
-        android:text="RFID 기기를 통하여 휴대폰을 활성화해보세요!"
-        android:fontFamily="@font/tmoneyroundwind_extrabold"
-        android:layout_marginBottom="10dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/broad_RFIDtag_button"
-        android:text="태그하기"
-        android:background="#ffffff"
-        android:textColor="#000000"
-        android:fontFamily="@font/tmoneyroundwind_extrabold"
-        android:onClick="onClickRFID"/>
+        android:background="#77000000"
+        android:id="@+id/rfid_layout"
+        android:padding="15dp"
+        android:alpha="0.0f">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AMDM"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:textSize="12pt"
+            android:background="@color/colorBackground"
+            android:padding="5dp"/>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RFID 태그를 준비중입니다."
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="7pt"
+                android:id="@+id/ready_rfid"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RFID를 태그해주시기 바랍니다."
+                android:id="@+id/tag_rfid"
+                android:textColor="#000000"
+                android:alpha="0.2"
+                android:gravity="center"
+                android:layout_margin="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="완료버튼 눌러주시면 락이 풀립니다."
+                android:id="@+id/confirm_rfid"
+                android:textColor="#000000"
+                android:alpha="0.2"
+                android:gravity="center"
+                android:layout_margin="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rfid_dialog_confirm"
+                    android:text="완료"
+                    android:clickable="false"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rfid_dialog_cancel"
+                    android:text="취소"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

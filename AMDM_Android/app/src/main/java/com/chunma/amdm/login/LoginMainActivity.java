@@ -38,13 +38,12 @@ public class LoginMainActivity extends AppCompatActivity{
             if (permssionCheck!= PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this,"권한 승인이 필요합니다",Toast.LENGTH_SHORT).show();
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.FOREGROUND_SERVICE)) {
-                    Toast.makeText(this,"사용을 위해 권한이 필요합니다.1",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"사용을 위해 권한이 필요합니다.",Toast.LENGTH_SHORT).show();
                 } else {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.FOREGROUND_SERVICE},  MY_PERMISSIONS_REQUEST_FOREGROUND_SERVICE);
-                    Toast.makeText(this,"사용을 위해 권한이 필요합니다.2",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"사용을 위해 권한이 필요합니다.",Toast.LENGTH_SHORT).show();
                 }
             }
-            else Toast.makeText(this,"권한 승인 완료",Toast.LENGTH_SHORT).show();
         }
     }
 

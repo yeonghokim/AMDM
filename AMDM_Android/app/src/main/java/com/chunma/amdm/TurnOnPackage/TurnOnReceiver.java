@@ -1,17 +1,12 @@
 package com.chunma.amdm.TurnOnPackage;
 
 import android.app.ActivityManager;
-import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
-import android.widget.Toast;
 
-import com.chunma.amdm.MainActivity;
 import com.chunma.amdm.PreferenceManager;
-import com.chunma.amdm.SplashActivity;
 
 public class TurnOnReceiver extends BroadcastReceiver {
 

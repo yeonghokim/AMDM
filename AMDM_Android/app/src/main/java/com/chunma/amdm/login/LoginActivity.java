@@ -80,6 +80,13 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+            }else{
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(LoginActivity.this,"아이디나 비밀번호가 맞지 않습니다.",Toast.LENGTH_LONG).show();
+                    }
+                });
             }
             runOnUiThread(new Runnable() {
                 @Override

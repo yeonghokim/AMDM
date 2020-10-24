@@ -252,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this,"startService1",Toast.LENGTH_LONG).show();
                         PreferenceManager.getInstance().setLockHistory(MainActivity.this,true);
                     }
                 });

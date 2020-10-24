@@ -82,7 +82,6 @@ public class TurnOnActivity extends AppCompatActivity{
     public void onClickRFID(View v){
         //RFID버튼이 눌렸을떄
         //커스텀 다이얼로그 실행
-        Toast.makeText(getApplicationContext(),"helloAMDM",Toast.LENGTH_LONG).show();
         rfidLayout.setAlpha(1.0f);
         Thread RFIDthread = new Thread(){
             @Override

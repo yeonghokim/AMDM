@@ -28,18 +28,12 @@ import com.chunma.amdm.PreferenceManager;
 import com.chunma.amdm.R;
 import com.chunma.amdm.rfid.RFIDDialog;
 
-public class TurnOnActivity extends AppCompatActivity implements DialogInterface.OnDismissListener{
+public class TurnOnActivity extends AppCompatActivity{
 
     LinearLayout rfidLayout;
 
     Button rfid_cancelButton;
     Button rfid_confirmButton;
-
-    static public int DIALOG_CANCEL=0;
-    static public int DIALOG_CONFIRM=1;
-    static public int DIALOG_ERROR=2;
-
-    static public int dialog_text;
 
     TextView readytextView;
     TextView tagtextView;
@@ -71,11 +65,12 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
         rfid_confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //완료
+                PreferenceManager.getInstance().setLockHistory(TurnOnActivity.this,false);
+                stopService(LockService.runningIntent);
+                LockService.runningIntent=null;
+                finish();
             }
         });
-
-
 
         //비행기 모드 온
         /*if(!isAirModeOn()) {
@@ -92,8 +87,6 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
         Thread RFIDthread = new Thread(){
             @Override
             public void run() {
-                super.run();
-                dialog_text=DIALOG_ERROR;
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -159,18 +152,9 @@ public class TurnOnActivity extends AppCompatActivity implements DialogInterface
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK ||keyCode==KeyEvent.KEYCODE_HOME) {
             //나중에 차단하기
+            Toast.makeText(this,"락이 진행되고 있습니다!",Toast.LENGTH_LONG).show();
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public void onDismiss(DialogInterface dialog) {
-        //락 해제
-        if(RFIDDialog.dialog_text==RFIDDialog.DIALOG_CONFIRM){
-            PreferenceManager.getInstance().setLockHistory(this,false);
-            stopService(new Intent(this,LockService.class));
-            finish();
-        }
     }
 
     @Override

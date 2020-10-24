@@ -1,23 +1,34 @@
 package com.chunma.amdm;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chunma.amdm.TCPconnect.TCPconnecter;
+import com.chunma.amdm.TurnOnPackage.LockService;
 import com.chunma.amdm.mainfragment.MainLockFragment;
 import com.chunma.amdm.mainfragment.MainSetupFragment;
 import com.chunma.amdm.mainfragment.MainStaticsFragment;
@@ -32,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected FragmentManager fragmentManager;
     protected FragmentTransaction transaction;
 
-    public LinearLayout loadingLayout;
+    public LinearLayout loading_layout;
 
     int nowPage=2;//main
     int changePage=0;
@@ -59,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fragmentmanager,mainLockFragment);
         transaction.commit();
 
-        loadingLayout=(LinearLayout)findViewById(R.id.main_loadinglayout);
+        FrameLayout mainLayout = (FrameLayout) findViewById(R.id.mainlayout);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.loading_dialog, mainLayout, true);
+
+        loading_layout=(LinearLayout)findViewById(R.id.loadinglayout);
 
         mainbutton=(ImageButton)findViewById(R.id.mainbutton);
         mainText=(TextView)findViewById(R.id.mainbuttontext);
@@ -183,9 +198,75 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }).start();
+    }
 
+    public void goLock(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("락 진행");
+        alertDialogBuilder.setMessage("락을 진행하시겠습니까?")
+                .setCancelable(true)
+                .setPositiveButton("진행",
+                new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Lockconnecter connecter = new Lockconnecter();
+                        connecter.setRequestString("Lock Time ID");
+                        connecter.start();
+                    }
+                })
+                .setNegativeButton("취소",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog =alertDialogBuilder.create();
+        alertDialog.show();
+    }
 
+    class Lockconnecter extends TCPconnecter{
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    loading_layout.setAlpha(1.0f);
+                }
+            });
+            final ImageView imgFrame = (ImageView) loading_layout.findViewById(R.id.iv_frame_loading);
+            final AnimationDrawable frameAnimation = (AnimationDrawable) imgFrame.getBackground();
+            imgFrame.post(new Runnable() {
+                @Override
+                public void run() {
+                    frameAnimation.start();
+                }
+            });
+            super.run();
+            frameAnimation.stop();
 
+            Intent intent = new Intent(MainActivity.this, LockService.class);
+            LockService.runningIntent = intent;
+            //intent.setFlags(Intent.FLAG_FROM_BACKGROUND);
+            finishAffinity();
+            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"startService1",Toast.LENGTH_LONG).show();
+                        PreferenceManager.getInstance().setLockHistory(MainActivity.this,true);
+                    }
+                });
+                startForegroundService(intent);
+            }else
+                startService(intent);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    loading_layout.setAlpha(0.0f);
+                }
+            });
+        }
     }
 
 

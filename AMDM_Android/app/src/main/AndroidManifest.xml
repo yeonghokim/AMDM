@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.chunma.amdm">
 
-    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+    <!--
+        <uses-feature android:name="android.hardware.nfc" android:required="true"/>
 
-    <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+        <uses-permission android:name="android.permission.NFC" />
+        <uses-permission android:name="android.permission.INTERNET"/>
+    -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -17,24 +19,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <service
+            android:name=".TurnOnPackage.LockService"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".login.LoginMainActivity" />
-        <activity android:name=".login.LoginActivity"
-            android:noHistory="true"/>
+        <activity
+            android:name=".login.LoginActivity"
+            android:noHistory="true" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".TurnOnPackage.TurnOnActivity"/>
 
-        <activity android:name=".MainActivity"/>
-
-        <activity android:name=".TurnOnPackage.TurnOnActivity"
-            android:launchMode="singleTask"/>
         <receiver
             android:name=".TurnOnPackage.TurnOnReceiver"
             android:enabled="true"

@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.widget.Toast;
 
 import com.chunma.amdm.MainActivity;
@@ -19,12 +20,22 @@ public class TurnOnReceiver extends BroadcastReceiver {
 
         String action = intent.getAction();
 
-        switch (action){
-            case Intent.ACTION_SCREEN_OFF:
-
-                String str = "브로드캐스트가 실행되었습니다.";
-                Toast t1 = Toast.makeText(context,str,Toast.LENGTH_LONG);
-                t1.show();
+        if(PreferenceManager.getInstance().getLockHistory(context)) {
+            switch (action) {
+                case Intent.ACTION_BOOT_COMPLETED:
+                    Intent service_intent = new Intent(context, LockService.class);
+                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+                        context.startForegroundService(service_intent);
+                    }else{
+                        context.startService(service_intent);
+                    }
+                    LockService.runningIntent = service_intent;
+                case Intent.ACTION_SCREEN_OFF:
+                    if (IsServiceRunning(context, LockService.class)) {
+                        Intent activityIntent = new Intent(context, TurnOnActivity.class);
+                        activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(activityIntent);
+                    }
 /*
                 if (km == null)
                     km = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
@@ -37,23 +48,10 @@ public class TurnOnReceiver extends BroadcastReceiver {
                 Intent i = new Intent(context, TurnOnActivity.class);
                 //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);*/
-                break;
-
-            case Intent.ACTION_BOOT_COMPLETED:
-            default:
-                //락이 실행되어있는지 DB에서 가져오기
-                if(!IsServiceRunning(context,LockService.class)
-                                &&
-                        PreferenceManager.getInstance().getLockHistory(context)) {
-
-                    Intent service_intent = new Intent(context, LockService.class);
-                    service_intent.setFlags(Intent.FLAG_FROM_BACKGROUND);
-                    context.startService(service_intent);
-                }
-                break;
+                    break;
+            }
         }
     }
-
 
     private boolean IsServiceRunning(Context context, Class<?> serviceClass){
         ActivityManager manager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);

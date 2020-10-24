@@ -2,26 +2,33 @@ package com.chunma.amdm.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.chunma.amdm.MainActivity;
 import com.chunma.amdm.R;
+import com.chunma.amdm.TCPconnect.TCPconnecter;
 
 import static java.lang.Thread.sleep;
 
 public class LoginActivity extends AppCompatActivity {
-
     EditText ID_text;
     EditText PW_text;
 
-    LinearLayout loading_layout;
+    String ID;
+    String PW;
 
-    Thread loginThread;
+    LinearLayout loading_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,71 +38,55 @@ public class LoginActivity extends AppCompatActivity {
         ID_text = (EditText)findViewById(R.id.login_ID);
         PW_text = (EditText)findViewById(R.id.login_PW);
 
-        loading_layout = (LinearLayout)findViewById(R.id.login_loadinglayout);
+        FrameLayout loginLayout = (FrameLayout) findViewById(R.id.loginlayout);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.loading_dialog, loginLayout, true);
+
+        loading_layout = (LinearLayout)findViewById(R.id.loadinglayout);
     }
     public void btnClick(View view) {
-        loginThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //로딩창 보여준 후
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        loading_layout.setAlpha(1.0f);
-                    }
-                });
+        ID = ID_text.getText().toString();
+        PW = PW_text.getText().toString();
 
-                /*final ImageView img_loading_frame = (ImageView) loading_layout.findViewById(R.id.iv_frame_loading);
-                final AnimationDrawable frameAnimation = (AnimationDrawable) img_loading_frame.getBackground();
-
-                img_loading_frame.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        frameAnimation.start();
-                    }
-                });
-                */
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                //frameAnimation.stop();
-                //로딩창 끄고
-
-                if(1==1){
-                //if(ID_text.getText().equals("admin")&&PW_text.getText().equals("admin")){ 이게 잘못되었음
-                    /*runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            goMain();
-                        }
-                    });*/
-                    Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        loading_layout.setAlpha(0.0f);
-                    }
-                });
-            }
-        });
-
-        //로그인 하는 것 구현 하면됨
-        //네트워크로 구현
-        loginThread.start();
+        LoginConnecter connecter = new LoginConnecter();
+        connecter.setRequestString("login ID PW");
+        connecter.start();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent e){
-        if(e.getAction() == MotionEvent.ACTION_DOWN){
-            synchronized (loginThread){
-                loginThread.notifyAll();
+    public class LoginConnecter extends TCPconnecter{
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    loading_layout.setAlpha(1.0f);
+                }
+            });
+            final ImageView imgFrame = (ImageView) loading_layout.findViewById(R.id.iv_frame_loading);
+            final AnimationDrawable frameAnimation = (AnimationDrawable) imgFrame.getBackground();
+
+            imgFrame.post(new Runnable() {
+                @Override
+                public void run() {
+                    frameAnimation.start();
+                }
+            });
+
+            super.run();
+            frameAnimation.stop();
+
+            //if(this.getAnswerString().equals("")){
+            if(ID.equals("admin")&&PW.equals("admin")){
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    loading_layout.setAlpha(0.0f);
+                }
+            });
         }
-        return true;
     }
 }

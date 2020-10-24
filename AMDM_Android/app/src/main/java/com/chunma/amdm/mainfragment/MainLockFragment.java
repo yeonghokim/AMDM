@@ -3,6 +3,7 @@ package com.chunma.amdm.mainfragment;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -40,29 +41,7 @@ public class MainLockFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(),"helloAMDM",Toast.LENGTH_LONG).show();
-                TCPconnecter connecter = new TCPconnecter(){
-                    @Override
-                    public void run(){
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((MainActivity)getActivity()).loadingLayout.setAlpha(1.0f);
-                            }
-                        });
-                        super.run();
-                        //TurnOnService 실행/*
-                        Intent intent = new Intent(activity, LockService.class);
-                        intent.setFlags(Intent.FLAG_FROM_BACKGROUND);
-                        activity.startService(intent);
-                    }
-                };
-
-                connecter.activity= MainActivity.mainActivity;
-                connecter.SetTcpSocket("127.0.0.1",12345);
-                connecter.setRequestString("Lock");
-                connecter.start();
-                //통신 끝나고 응답 받으면 바로 락 실행
+                ((MainActivity) getActivity()).goLock();
             }
         });
         return rootview;

@@ -208,5 +208,5 @@ IS_LOCK | INTEGER | X
 #### 코드
  * [linechart](https://github.com/PhilJay/MPAndroidChart)
  * [tcp](https://github.com/DDANGEUN/TCP_ClientSocket/tree/master)
- * [NFC](https://biig.tistory.com/78)
+ * [NFC](https://github.com/codexpedia/android_nfc_read_write)
 

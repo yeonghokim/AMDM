@@ -12,10 +12,11 @@ AMDM의 로고는 초승달과 자물쇠가 합쳐서 좋은 밤을 위해서는
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
 ## 기능 설계
- - [안드로이드 디자인](https://ovenapp.io/project/qREXQacVLW1qzBvL5xhXo0wNgUoqVt7W#ScIyR)
+ - [안드로이드 디자인 Kakao Oven](https://ovenapp.io/project/qREXQacVLW1qzBvL5xhXo0wNgUoqVt7W#ScIyR)
 
 ## 구성 / 필수 조건 안내 (Prerequisites)
 * Android 6.0 (Marshmallow) 이상 
+* 휴대폰 NFC, 인터넷 기능 필수
 * Python3.0 이상 필요
 * AMDMServer가 실행되어있어야 정상적으로 작동함
 
@@ -31,8 +32,8 @@ AMDM의 로고는 초승달과 자물쇠가 합쳐서 좋은 밤을 위해서는
  - *Fragment*를 통하여 메인화면 구현
  - *BroadCast Receiver*를 통해 안드로이드 켜질시 상태 구현
  - chart 구현을 위해 [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)를 사용하여 구현
- - Lock 구현을 위해 LockScreen을 없애고, 커스텀 액티비티로 대체함
- - TurnOnService 구현
+ - Lock구현을 위해 Screen 없애질때마다 커스텀 액티비티로 대체함
+ - TurnOnService 서비스 구현
 
 ## 설치 안내 (Installation Process) - 미완성
 
@@ -50,7 +51,7 @@ $ sqlite3
 $ .open AMDMserver.sqlite3
 ```
 
-## 프로젝트 사용법 (Getting Started) - 미완성
+## 프로젝트 사용법 (Getting Started)
 1. [Android](https://github.com/yeonghokim/AMDM#android-1)
 2. [Server](https://github.com/yeonghokim/AMDM#server)
 3. [IoT장비와 데이터 교환](https://github.com/yeonghokim/AMDM#iot%EC%9E%A5%EB%B9%84-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%90%ED%99%98)
@@ -59,15 +60,20 @@ $ .open AMDMserver.sqlite3
 
 ## Android
 #### 화면 리스트
-* 스플래시 activity
-* 로그인 메인 activity
-* 로그인 activity
-* 회원가입 activity
-* 메인 activity
-    * 잠금 Fragment
-    * 통계 Fragment
-    * 설정 Fragment
-* LockActivity
+* SplashActivity
+* LoginMainActivity
+* LoginActivity
+* MainActivity
+    * MainLockFragment
+    * MainSetupFragment
+    * MainStaticsFragment
+* TurnOnActivity
+* TurnOnReceiver
+* LockService
+#### 참고사항
+* 로그인 ID: admin PW: admin
+* 서버통신 대체 : 3초 대기
+* RFID 태그 대체 : 3초 대기
 
 ## Server
 * Python3으로 이루어진 TCP 소켓 서버입니다.
@@ -156,9 +162,7 @@ $ .open AMDMserver.sqlite3
         "TurnOnTime": "2020-10-04 13:49:12"
 }
 ```
-
 ## DataBase (SQLite)
-
 ### User Table
 칼럼이름 | 타입 | 널 유무  | 외래키 유무
 -------- | -------- | ---------- | ----------
@@ -197,7 +201,12 @@ IS_LOCK | INTEGER | X
 - 김영호 (yeongho.kim2000@gmail.com), Github Id: yeonghokim
 - 부규필 (qfeel0812@gmail.com), Github Id: Qfeel-Dev
 
-## 저작권 및 사용권 정보 (Copyleft / End User License) - 미완성
- * [linechart](https://github.com/PhilJay/MPAndroidChart)
+## 저작권 및 사용권 정보 (Copyleft / End User License)
+#### 이미지
  * [LockIcon](https://www.flaticon.com/free-icon/lock_3039495?term=lock&page=1&position=65)
  * [MoonIcon](https://www.flaticon.com/free-icon/moon_1030337?term=moon&page=2&position=85)
+#### 코드
+ * [linechart](https://github.com/PhilJay/MPAndroidChart)
+ * [tcp](https://github.com/DDANGEUN/TCP_ClientSocket/tree/master)
+ * [NFC](https://biig.tistory.com/78)
+

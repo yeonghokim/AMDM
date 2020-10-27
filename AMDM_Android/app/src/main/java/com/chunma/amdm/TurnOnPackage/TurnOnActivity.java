@@ -26,7 +26,6 @@ import android.widget.Toast;
 
 import com.chunma.amdm.PreferenceManager;
 import com.chunma.amdm.R;
-import com.chunma.amdm.rfid.RFIDDialog;
 
 public class TurnOnActivity extends AppCompatActivity{
 

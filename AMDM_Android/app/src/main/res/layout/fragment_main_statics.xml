@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainfragment.MainStaticsFragment">
+    tools:context=".mainfragment.MainStaticsFragment"
+    android:orientation="vertical"
+    android:padding="30dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="통계페이지"
-        android:gravity="center"/>
-<!--
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/linechart"
-        android:layout_width="match_parent"
-        android:layout_height="376dp"/>-->
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="10dp"
+        android:textSize="8pt"
+        android:text="김영호님 휴대폰 사용시간 "/>
 
-</FrameLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart1"
+        android:layout_width="match_parent"
+        android:layout_height="376dp"
+        android:background="#ffffff"/>
+
+</LinearLayout>

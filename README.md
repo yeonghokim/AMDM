@@ -6,7 +6,7 @@
 
 ![Logo](https://github.com/yeonghokim/AMDM/blob/main/logo/Logo_Github.png)
 
-AMDM의 로고는 초승달과 자물쇠가 합쳐서 좋은 밤을 위해서는 보안을 잠그자 라는 뜻을 의미하고 있습니다.
+<p align="center">AMDM의 로고는 초승달과 자물쇠가 합쳐서 좋은 밤을 위해서는 보안을 잠그자 라는 뜻을 의미하고 있습니다.</p>
 
 ## 팀소개 및 프로젝트 설명 동영상 👍
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)

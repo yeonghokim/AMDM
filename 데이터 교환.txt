@@ -1,0 +1,74 @@
+## IoT장비 데이터 교환
+### 데이터 수신 형태 `IoT -> Server`
+  * **Type** : 기기의 형태
+  * **ID** : 기기의 아이디(초기 설정때 서버에서 지급)
+  * **Lock** : 현재 기기를 이 상태로 잠금 변경
+```json
+{
+        "Type": "IoT",
+        "ID": 1234567,
+        "Lock": 0,
+}
+```
+### 데이터 송신 형태 `Server -> IoT` 
+  * **ForceLock** : 현재 기기의 강제 잠금 유무
+  * **PhoneLock** : 기기안의 핸드폰의 강제 잠금 유무
+  * **PhoneUnLock** : 기기안의 핸드폰의 강제 잠금 유무
+```json
+{
+        "ForceLock": 0,
+        "PhoneLock": {
+                "19-760730003": 1
+        },
+        "PhoneUnLock": {
+                "19-760730004": 0
+        }
+}
+```
+
+## Android 데이터 교환
+### 데이터 수신 형태 Type1 `Android -> Server` 
+  * **Type** : 기기의 형태
+  * **RequestType**: 요청 타입
+  * **ID** : 기기의 아이디(초기 설정때 서버에서 지급)
+  * **Lock** : 현재 기기의 잠금 유무
+  * **Time** : 기기의 잠금 시간
+```json
+{
+        "Type": "Android",
+        "RequestType": 1,
+        "ID": 1234567,
+        "Lock": 1,
+        "Time": "2020-10-04 13:49:12"
+}
+```
+### 데이터 수신 형태 Type2 `Android -> Server`
+  * **Type** : 기기의 형태
+  * **RequestType**: 요청 타입
+  * **ID** : 기기의 아이디(초기 설정때 서버에서 지급)
+  * **IoTID** : IoT기기의 아이디
+  * **Lock** : 잠글지 열지
+  * **Time** : 요청 시간
+```json
+{
+        "Type": "Android",
+        "RequestType": 2,
+        "ID": 1234567,
+        "IoTID" : 123,
+        "Lock" : 1,
+        "Time": "2020-10-04 13:49:12"
+}
+```
+### 데이터 수신 형태 Type3 `Android -> Server`
+  * **Type** : 기기의 형태
+  * **RequestType**: 요청 타입
+  * **ID** : 기기의 아이디(초기 설정때 서버에서 지급)
+  * **TurnOnTime** : 기기가 켜진 시간
+```json
+{
+        "Type": "Android",
+        "RequestType": 3,
+        "ID": 1234567,
+        "TurnOnTime": "2020-10-04 13:49:12"
+}
+```
